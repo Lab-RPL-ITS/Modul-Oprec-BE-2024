@@ -16,6 +16,7 @@
 - [Transaction](#transaction)
   - [Tujuan Transaction](#tujuan-transaction)
   - [Bagian-bagian Transaction](#bagian-bagian-transaction)
+  - [Contoh Penggunaan Transaction](#contoh-penggunaan-transaction)
 - [Optimalisasi & Normalisasi](#optimalisasi--normalisasi)
   - [Normalisasi](#normalisasi)
   - [Instagram Justin Bieber Problem](#instagram-justin-bieber-problem)
@@ -95,6 +96,24 @@ Database Transaction terdiri dari 3 hal berikut,
 2. COMMIT : Bila semua proses / query yang dijalankan dalam transaksi berhasil, maka fungsi COMMIT dilakukan agar semua perubahan yang telah dilakukan tersimpan di database
 
 3. ROLLBACK : Bila terdapat kegagalan pada salah satu saja proses / query yang dilakukan, maka semua proses akan dibatalkan dan tidak disimpan ke database.
+
+### Contoh Penggunaan Transaction
+
+Contoh penerapan dari Database Transaction dalam SQL adalah sebagai berikut,
+
+```sql
+-- inisialisasi transaksi
+START TRANSACTION;
+
+-- ganti username dari pengguna 1 ke 'user1'
+UPDATE users SET username = 'user1' WHERE id = 1;
+
+-- ganti username dari pengguna 2 dan 3 ke 'userNew'
+UPDATE users SET username = 'userNew' WHERE id IN (2, 3);
+
+-- melakukan commit terhadap perubahan (atau rollback bila terjadi kegagalan)
+COMMIT;
+```
 
 ## Optimalisasi & Normalisasi
 
