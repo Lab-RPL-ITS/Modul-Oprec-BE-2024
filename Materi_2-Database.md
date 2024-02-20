@@ -8,7 +8,12 @@
   - [Fungsi](#fungsi)
 - [Jenis & Contoh](#jenis--contoh)
   - [Relational](#relational)
+    - [Kelebihan Relational Database](#kelebihan-relational-database)
+    - [Contoh Relational Database](#contoh-relational-database)
   - [Non-Relational](#non-relational)
+    - [Kelebihan Non-Relational Database](#kelebihan-non-relational-database)
+    - [Contoh Non-Relational Database](#contoh-non-relational-database)
+  - [Relational Database vs Non-Relational Database](#relational-database-vs-non-relational-database)
 - [Data Model](#data-model)
   - [CDM](#cdm)
   - [PDM](#pdm)
@@ -41,9 +46,76 @@ Database sendiri memiliki berbagai macam penggunaan, mulai dari sekedar menyimpa
 
 ## Jenis & Contoh
 
-### Relational
+### Relational 
+![Relational](image/Materi_2-Database/2-1.webp)
+
+> Kumpulan item data yang hubungannya sudah ditentukan. Data disimpan dalam baris dan kolom serta secara kolektif membentuk tabel yang memiliki relasi satu sama lain.
+
+*Relational* database adalah kelompok *item* dalam data degnan hubungan yang sudah ditentukan sebelumnya. Umumnya, *item* ini disusun menjadi tabel yang terdiri dari kolom dan baris. Tabel sendiri dipakai untuk menyimpan informasi objek yang direpresentasikan dalam database. 
+
+Kolom dalam tabel memuat data tertentu dan nilai atribut. Baris pada tabel menunjukkan kesimpulan nilai dari suatu objek. Tiap baris pada tabel dapat ditandai secara unik atau dalam bentuk ID. Kerap disebut dengan kunci utama (*primary key*)
+
+*Relational database* adlaah penyajian **data** yangdigunakan untuk membuat ``kesimpulan`` dan ``analisis``. Data ini dapat diakses langsung tanpa harus menyusun ulang menjadi tabel baru dalam database.
+
+#### Kelebihan Relational Database
+Dilansir dari [Educba](https://educba.com/relational-database-advantages/), kelebihan ini membuat ``database relational`` tetap digunakan dan terus dikembangkan dari waktu ke waktu. 
+
+Berikut adalah beberapa diantaranya:
+Kriteria | Kelebihan
+:------ |:----- 
+Sederhana | *Database* ini cukup sederhana dan tidak membutuhkan ``hierarki data`` yang sangat kompleks untuk membuatnya. Bahkan, data yang ada bisa dengan mudah ditangani oleh SQL *query*
+Mudah diakses | Tidak ada aturan khusus yang dibuat untuk bisa mengakses semua ``data`` yang sudah dibuat dalam bentuk tabel. Dalam *relational database* siapapun bisa mengakses dengan mudah dan cepat
+Akurasi data tinggi | Saat menggunakan *relational database*, kita akan menggunakan kunci utama (*foreign key*) dan kunci asing (*foreign key*). Hadirnya dua kunci untuk melakukan seleksi ini membuat dua data yang berhubungan satu sama lain tidak mengalami duplikasi. Karena dalam *relational database* apapun yang sama akan ditampilkan sekali saja. Jadi, ``akurasi`` datanya menjadi lebih tinggi.
+Fleksibilitas | *Relational database* cenderung lebih fleksibel dalam banyak hal khususya berhubungan dengan penambahan data. Apabila ada ``tambahan data`` yang jumlahnya besar, semua bisa ditampung dan diolah tanpa membebani. Artinya pemegang *database* bisa dengan mudah melakukan modifikasi pada data baik menambah, mengurangi, atau mengganti.
+
+#### Contoh Relational Database 
+Tidak semua *database* memiliki fungsi *relational* lohh. Berikut adalah beberapa contoh ``Realtional Database``
+
+- MySQL
+Salah satu aplikasi *relational database open source* terbaik yang ada saat ini. Selain itu aplikasi ini juga beberapa lisensi tambahan yang bisa diambil sesuai dengan kebutuhan. ``MySQL`` memberikan kemudahan saat input data dan memiliki performa tinggi.
+
+- MariaDB
+Aplikasi ini sebenarnya dibuat dengan base MySQL dengan beberapa penambahan. MariaDB menambahkan ruangan untuk *engine* dan mengatasi adanya limitasi. Dengan kemampuan ini database menjadi lebih cepat.Salah satu hasil dari *relational database* yang dibuat dengan MariaDB adalah Google, Mozilla, hingga Wikimedia.
+
+- PostgreSQL
+Hampir sama dengan MariaDB, aplikasi ini juga merupakan pengembangan meski masih dalam naungan open source. Kelebihan dari database ini adalah performa dan fleksibilitas yang meningkat saat menangani database. ``PostgreSQL`` juga bisa melakukan pembacaan data yang cepat untuk melakukan analisis. Produk dari database ini adalah Skype dan Instagram.
 
 ### Non-Relational
+Basis data ``non0relasional`` (sering disebut basis data **NoSQL**) berbeda dari basis data relasional tradisional karena basis data tersebut menyimpan datanya dalam bentuk non-tabular. Sebaliknya, database ini mungkin didasarkan pada struktur data seperti dokumen, JSON, dan format lainnya. Sebuah ``dokumen`` yang sangat rinci sekaligus berisi berbagai jenis informasi berbeda dalam format berbeda. ``Kemampuan`` untuk mencerna dan mengatur berbagai jenis informasi secara berdampingan membuat database non-relasional ini jauh lebih fleksibel dibandingkan database relasional.
+
+![Contoh Dokumen MongoDB](image/Materi_2-Database/2-2.avif)
+*Contoh Dokumen Pasien di Pelayanan Kesehatan.*
+
+Basis data ``non-relasional`` sering digunakan ketika sejumlah besar data yang kompleks dan beragam perlu diatur. Misalnya, sebuah toko besar mungkin memiliki *database* di mana setiap pelanggan memiliki dokumennya sendiri yang berisi semua informasi mereka, mulai dari nama dan alamat hingga riwayat pesanan dan informasi kartu kredit. Meskipun formatnya berbeda, masing-masing informasi ini dapat disimpan dalam dokumen yang sama.
+
+**Basis data** non-relasional sering kali bekerja lebih cepat karena kueri tidak harus melihat beberapa tabel untuk memberikan jawaban, seperti yang sering dilakukan oleh kumpulan ``data relasional``. Oleh karena itu, database non-relasional ``ideal`` untuk menyimpan data yang sering diubah atau untuk aplikasi yang menangani berbagai jenis data. Mereka dapat mendukung aplikasi yang ``berkembang pesat`` yang memerlukan database dinamis yang dapat berubah dengan cepat dan mengakomodasi sejumlah besar data yang kompleks dan tidak terstruktur.
+
+#### Kelebihan Non-Relational Database
+
+Kriteria | Kelebihan
+:------ |:----- 
+Organisasi kumpulan data besar-besaran | Di era Big Data, database non-relasional tidak hanya dapat menyimpan informasi dalam jumlah besar, namun juga dapat melakukan query terhadap kumpulan data tersebut dengan mudah. Skala dan kecepatan merupakan keuntungan penting dari database non-relasional.
+Perluasan basis data yang fleksibel | Data tidak statis. Semakin banyak informasi yang dikumpulkan, database non-relasional dapat menyerap titik data baru ini, memperkaya database yang sudah ada dengan tingkat nilai granular baru meskipun database tersebut tidak sesuai dengan tipe data dari informasi yang sudah ada sebelumnya.
+Beberapa struktur data | Data yang kini dikumpulkan dari pengguna memiliki berbagai bentuk, mulai dari angka dan string, hingga konten foto dan video, hingga riwayat pesan. Basis data memerlukan kemampuan untuk menyimpan berbagai format informasi ini, memahami hubungan di antara format tersebut, dan melakukan kueri terperinci. Apa pun format informasi Anda, database non-relasional dapat menyusun tipe informasi berbeda secara bersamaan dalam dokumen yang sama.
+Dibangun untuk cloud | Basis data non-relasional bisa berukuran sangat besar. Dan karena mereka bisa, dalam beberapa kasus, tumbuh secara eksponensial, mereka memerlukan lingkungan hosting yang bisa tumbuh dan berkembang bersama mereka. Skalabilitas yang melekat pada cloud menjadikannya rumah ideal untuk database non-relasional.
+
+#### Contoh Non-Relational Database
+- MongoDB
+- Apache Cassandra
+- Apache CocuhDB
+- Neo4j
+- DinamoDB
+
+Selengkapnya, teman-teman bisa cek pada url berikut [Beberapa Jenis Database Non-Relational](https://www.griyasis.com/10-jenis-database-nosql-terpopuler-2022)
+
+### Relational Database vs Non-Relational Database
+Kategori | Relational Database | Non-Relational Database
+:------ |:----- | :-----
+Data Model | Berbentuk tabel | Berbentuk dokumen, *key-value*, atau grafik
+Jenis data | Terstruktur | Data terstruktur, semistruktur, hingga tidak terstruktur
+Integritas data | Tinggi dengan kepatuhan **ACID** penuh | Model konsistensi akhir
+Performa | Ditingkatkan dengan menambahkan lebih banyak sumber daya ke server | Ditingkatkan dengan menambahkan lebih banyak simpul server
+Penskalaan | Pensklaan horizontal membutuhkan strategi manajemen data tambahan | Penskalaan horizontal sangatlah mudah.
 
 ## Data Model
 
