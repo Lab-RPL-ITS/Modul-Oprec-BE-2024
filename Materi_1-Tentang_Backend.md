@@ -130,7 +130,7 @@ Tujuan Pengembangan | Pengembangan *frontend* berfokus pada pembuatan antarmuka 
 Keterampilan Pengembangan | Developer *frontend* paham tentang HTML, CSS, dan JavaScript. Mereka dapat menggunakan kerangka kerja *frontend* dan membuat halaman yang menarik secara visual. Mereka mengunkap masalah pengguna saat berinteraksi dengan aplikasi. | Developer *backend* memiliki keterampilan pengodean dan manajemen basis data. Mereka juga memahami keamanan kode dan cara menggunakan alat, platform, dan kerangka kerja (*framework*) pengembangan aplikasi.
 
 ## Jobdesc
-Apa aja sih jobdesc Backend Developer? Berat-berat ga? Dilansir dari [hiredigital](https://hiredigital.com/job-descriptions/backend-developer), ada 9 jodbesc dari Backend Developer:
+Apa aja sih jobdesc Backend Developer? Berat-berat ga? Dilansir dari [Workable](https://resources.workable.com/back-end-developer-job-description), ada 9 jodbesc dari Backend Developer:
 1. Berperan aktif dalam siklus hidup aplikasi, dengan fokus pada pengkodean dan debugging
 2. Menulis clean code untuk mengembangkan aplikasi web yang fungsional dan stabil
 3. Mengidentifikasi dan memperbaiki masalah yang muncul dalam aplikasi
