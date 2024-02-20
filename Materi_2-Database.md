@@ -84,6 +84,7 @@ Hampir sama dengan MariaDB, aplikasi ini juga merupakan pengembangan meski masih
 Basis data ``non0relasional`` (sering disebut basis data **NoSQL**) berbeda dari basis data relasional tradisional karena basis data tersebut menyimpan datanya dalam bentuk non-tabular. Sebaliknya, database ini mungkin didasarkan pada struktur data seperti dokumen, JSON, dan format lainnya. Sebuah ``dokumen`` yang sangat rinci sekaligus berisi berbagai jenis informasi berbeda dalam format berbeda. ``Kemampuan`` untuk mencerna dan mengatur berbagai jenis informasi secara berdampingan membuat database non-relasional ini jauh lebih fleksibel dibandingkan database relasional.
 
 ![Contoh Dokumen MongoDB](image/Materi_2-Database/2-2.avif)
+
 *Contoh Dokumen Pasien di Pelayanan Kesehatan.*
 
 Basis data ``non-relasional`` sering digunakan ketika sejumlah besar data yang kompleks dan beragam perlu diatur. Misalnya, sebuah toko besar mungkin memiliki *database* di mana setiap pelanggan memiliki dokumennya sendiri yang berisi semua informasi mereka, mulai dari nama dan alamat hingga riwayat pesanan dan informasi kartu kredit. Meskipun formatnya berbeda, masing-masing informasi ini dapat disimpan dalam dokumen yang sama.
