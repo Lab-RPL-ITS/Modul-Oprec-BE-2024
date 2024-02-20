@@ -130,15 +130,88 @@ Tujuan Pengembangan | Pengembangan *frontend* berfokus pada pembuatan antarmuka 
 Keterampilan Pengembangan | Developer *frontend* paham tentang HTML, CSS, dan JavaScript. Mereka dapat menggunakan kerangka kerja *frontend* dan membuat halaman yang menarik secara visual. Mereka mengunkap masalah pengguna saat berinteraksi dengan aplikasi. | Developer *backend* memiliki keterampilan pengodean dan manajemen basis data. Mereka juga memahami keamanan kode dan cara menggunakan alat, platform, dan kerangka kerja (*framework*) pengembangan aplikasi.
 
 ## Jobdesc
+Apa aja sih jobdesc Backend Developer? Berat-berat ga? Dilansir dari [hiredigital](https://hiredigital.com/job-descriptions/backend-developer), ada 9 jodbesc dari Backend Developer:
+1. Berperan aktif dalam siklus hidup aplikasi, dengan fokus pada pengkodean dan debugging
+2. Menulis clean code untuk mengembangkan aplikasi web yang fungsional dan stabil
+3. Mengidentifikasi dan memperbaiki masalah yang muncul dalam aplikasi
+4. Melakukan tes User Interface (UI) untuk mengoptimalkan kinerja aplikasi
+5. Bekerja sama dengan Frontend Developer (kelas sebelah) untuk mengintegrasikan elemen yang dihadapkan kepada user dengan logika server-side
+6. Mengumpulkan dan menangani persyaratan teknis dan desain, serta memberikan pelatihan dan dukungan kepada tim internal
+7. Membangun kode dan library untuk penggunaan aplikasi di semester depan
+8. Bekerja sama dengan pengembang lain, desainer, dan administrator sistem untuk mengidentifikasi fitur baru
+9. Mengikuti perkembangan teknologi terbaru
+
+Jadi, berat engganya jobdesc Backend Developer tergantung temen-temen juga sih. Asal punya tekad dan rasa tanggung jawab yang besar, pasti temen-temen bisa melewatinya dengan baik. Semangattt
 
 ## Roadmap
+Untuk menjadi seorang Backend Developer, ada beberapa hal utama yang harus teman-teman pelajari dan kuasai:
+- Bahasa Pemrograman Backend (Golang, Python, PHP, dll)
+- Database dan SQL
+- Pengembangan Server dan API
+- Konsep Keamanan Web
+- Version Control (Git)
+- Deployment dan DevOps
+
+Kalau kalian ingin explore lebih lanjut tentang apa yang perlu dipelajari, roadmap berikut mungkin bisa membantu kalian😀👉
+![Roadmap Backend](image/Materi_1-Tentang_Backend/roadmap_backend.png)
+
+Emang harus semua dipelajari ya? AHAHAHAH engga dong, roadmap di atas hanyalah panduan bukan persyaratan mutlak untuk menjadi seorang Backend Developer. Kalau semuanya beneran harus dipelajari, ya tipes rek😩
+
+![kerja kerja kerja tipes](image/Materi_1-Tentang_Backend/sddefault.jpg)
+
+Karena setiap proyek pengembangan web pasti memerlukan tech stack yang berbeda-beda sesuai dengan kebutuhan, sehingga hanya beberapa item roadmap yang diperlukan. Tetapi bukankah lebih baik kalau kita mempelajari dan menguasai suatu hal terlebih dahulu sebelum terjun ke lapangan? (ini tips biar banyak proyekan kayak cakno🤑)
 
 ## Karir
+Setelah mengetahui roadmap Backend Developer, pasti teman-teman berpikir kalau ternyata buanyak banget yang harus dipelajari dan dikuasai. Ya ga sih? (sok tau bgt😇)
+
+Emangnya kita bakal jadi apa sih? Kok banyak banget yang harus dikuasai?
 
 ### Peluang Karir
+Jadi ada 4 tahapan karir untuk seorang Backend Developer menurut [springboard.com](https://www.springboard.com/blog/software-engineering/become-backend-developer/) :
+1. Entry-Level Backend Developer
+2. Mid-Level Backend Developer
+3. Senior Backend Engineer
+
+#### Entry-Level Backend Developer
+Di tingkat awal,Backend Developer biasanya fokus pada pemahaman dasar kode, teknologi stack, dan pengembangan fitur sederhana. Biasanya mereka terlibat dalam membuat dan menguji kode untuk fitur baru, memperbaiki bug, mengikuti code review, dan berkolaborasi dengan tim frontend
+
+#### Mid-Level Backend Developer
+Pada tingkat menengah, mereka mengambil tugas yang lebih kompleks dan sering bekerja secara mandiri atau bahkan memimpin sebuah proyek kecil. Tanggung jawab mereka meliputi desain dan implementasi fitur backend yang lebih robust, optimasi kode untuk performa yang lebih baik, dan berpartisipasi dalam desain arsitektur sistem baru
+
+#### Senior Backend Developer
+Di level senior, Backend Developer bertanggung jawab atas strategi pengembangan backend secara keseluruhan, membuat keputusan desain dan arsitektur tingkat tinggi, dan memimpin proyek yang kompleks. Mereka juga berperan sebagai mentor untuk anggota tim junior
+
+Selain itu, ada berbagai spesialisasi yang bisa diikuti oleh Backend Developer, seperti:
+- API Developer = Spesialis dalam pembuatan dan pemeliharaan API
+- Database Developer = Ahli dalam desain, implementasi, dan manajemen sistem database
+- Cloud COmputing Developer = Fokud pada pembangunan dan pengelolaan aplikasi yang berjalan pada infrastruktur cloud
+- DevOps Engineer = Menggabungkan pengembangan dengan sistem operasi untuk memperlancar lifecycle software development
+- Security Engineer = Fokus pada perlindungan aplikasi web dan data dari ancaman
+- System Architect = Bertanggung jawab atas desain struktur keseluruhan sistem backend
+
+Nah terus gimana sih karir yang udah ditempuh para admin backend di lab RPL ini?
 
 ### Admin RPL
 
 #### Alumni
+- Pramudya Tiandana Wisnu Gautama
+  - Backend Developer Internship di DPTSI
+  - Backend Developer Internship di Blibli.com
+- Fairuz Hasna Rofifah
+  - Backend Engineer Internship di Telkom Indonesia
+  - Software Engineer Samsung R&D Institute Indonesia
+
+Beberapa dari kalian mungkin ngga asing denger nama mas-mbaknya. Kedua mas-mbak diatas merupakan alumni admin backend lab RPL angkatan 2019 yang udah lulus dan sedang menempuh karirnya masing-masing.
+
+Eits, tunggu bentar. Para admin backend lab RPL yang masih aktif ngga kalah jago loh. Ada siapa aja tuh?
 
 #### Admin Aktif
+Jadi admin backend di lab RPL ini yang masih aktif ada :
+- Alexander
+  - Backend Engineer Internship di Tokopedia
+  - Senior Backend Developer PPDB Jatim 2024
+- Made Rianja Richo Dainino
+  - Senior Backend Developer PPDB Jatim 2023
+- Cakno = Senior Backend Developer PPDB Jatim 2024
+- Kevin = Mid-Level Backend Engineer PPDB Jatim 2024
+- Iky = Mid-Level Backend Developer MyITS Archive
