@@ -27,6 +27,7 @@
   - [Instagram Justin Bieber Problem](#instagram-justin-bieber-problem)
   - [N+1 Problem](#n1-problem)
 - [Pemilihan](#pemilihan)
+- [Implementasi](#implementasi)
 
 ## Definisi & Fungsi
 
@@ -46,61 +47,66 @@ Database sendiri memiliki berbagai macam penggunaan, mulai dari sekedar menyimpa
 
 ## Jenis & Contoh
 
-### Relational 
+### Relational
+
 ![Relational](image/Materi_2-Database/2-1.webp)
 
 > Kumpulan item data yang hubungannya sudah ditentukan. Data disimpan dalam baris dan kolom serta secara kolektif membentuk tabel yang memiliki relasi satu sama lain.
 
-*Relational* database adalah kelompok *item* dalam data degnan hubungan yang sudah ditentukan sebelumnya. Umumnya, *item* ini disusun menjadi tabel yang terdiri dari kolom dan baris. Tabel sendiri dipakai untuk menyimpan informasi objek yang direpresentasikan dalam database. 
+_Relational_ database adalah kelompok _item_ dalam data degnan hubungan yang sudah ditentukan sebelumnya. Umumnya, _item_ ini disusun menjadi tabel yang terdiri dari kolom dan baris. Tabel sendiri dipakai untuk menyimpan informasi objek yang direpresentasikan dalam database.
 
-Kolom dalam tabel memuat data tertentu dan nilai atribut. Baris pada tabel menunjukkan kesimpulan nilai dari suatu objek. Tiap baris pada tabel dapat ditandai secara unik atau dalam bentuk ID. Kerap disebut dengan kunci utama (*primary key*)
+Kolom dalam tabel memuat data tertentu dan nilai atribut. Baris pada tabel menunjukkan kesimpulan nilai dari suatu objek. Tiap baris pada tabel dapat ditandai secara unik atau dalam bentuk ID. Kerap disebut dengan kunci utama (_primary key_)
 
-*Relational database* adlaah penyajian **data** yangdigunakan untuk membuat ``kesimpulan`` dan ``analisis``. Data ini dapat diakses langsung tanpa harus menyusun ulang menjadi tabel baru dalam database.
+_Relational database_ adlaah penyajian **data** yangdigunakan untuk membuat `kesimpulan` dan `analisis`. Data ini dapat diakses langsung tanpa harus menyusun ulang menjadi tabel baru dalam database.
 
 #### Kelebihan Relational Database
-Dilansir dari [Educba](https://educba.com/relational-database-advantages/), kelebihan ini membuat ``database relational`` tetap digunakan dan terus dikembangkan dari waktu ke waktu. 
+
+Dilansir dari [Educba](https://educba.com/relational-database-advantages/), kelebihan ini membuat `database relational` tetap digunakan dan terus dikembangkan dari waktu ke waktu.
 
 Berikut adalah beberapa diantaranya:
 Kriteria | Kelebihan
-:------ |:----- 
-Sederhana | *Database* ini cukup sederhana dan tidak membutuhkan ``hierarki data`` yang sangat kompleks untuk membuatnya. Bahkan, data yang ada bisa dengan mudah ditangani oleh SQL *query*
-Mudah diakses | Tidak ada aturan khusus yang dibuat untuk bisa mengakses semua ``data`` yang sudah dibuat dalam bentuk tabel. Dalam *relational database* siapapun bisa mengakses dengan mudah dan cepat
-Akurasi data tinggi | Saat menggunakan *relational database*, kita akan menggunakan kunci utama (*foreign key*) dan kunci asing (*foreign key*). Hadirnya dua kunci untuk melakukan seleksi ini membuat dua data yang berhubungan satu sama lain tidak mengalami duplikasi. Karena dalam *relational database* apapun yang sama akan ditampilkan sekali saja. Jadi, ``akurasi`` datanya menjadi lebih tinggi.
-Fleksibilitas | *Relational database* cenderung lebih fleksibel dalam banyak hal khususya berhubungan dengan penambahan data. Apabila ada ``tambahan data`` yang jumlahnya besar, semua bisa ditampung dan diolah tanpa membebani. Artinya pemegang *database* bisa dengan mudah melakukan modifikasi pada data baik menambah, mengurangi, atau mengganti.
+:------ |:-----
+Sederhana | _Database_ ini cukup sederhana dan tidak membutuhkan `hierarki data` yang sangat kompleks untuk membuatnya. Bahkan, data yang ada bisa dengan mudah ditangani oleh SQL _query_
+Mudah diakses | Tidak ada aturan khusus yang dibuat untuk bisa mengakses semua `data` yang sudah dibuat dalam bentuk tabel. Dalam _relational database_ siapapun bisa mengakses dengan mudah dan cepat
+Akurasi data tinggi | Saat menggunakan _relational database_, kita akan menggunakan kunci utama (_foreign key_) dan kunci asing (_foreign key_). Hadirnya dua kunci untuk melakukan seleksi ini membuat dua data yang berhubungan satu sama lain tidak mengalami duplikasi. Karena dalam _relational database_ apapun yang sama akan ditampilkan sekali saja. Jadi, `akurasi` datanya menjadi lebih tinggi.
+Fleksibilitas | _Relational database_ cenderung lebih fleksibel dalam banyak hal khususya berhubungan dengan penambahan data. Apabila ada `tambahan data` yang jumlahnya besar, semua bisa ditampung dan diolah tanpa membebani. Artinya pemegang _database_ bisa dengan mudah melakukan modifikasi pada data baik menambah, mengurangi, atau mengganti.
 
-#### Contoh Relational Database 
-Tidak semua *database* memiliki fungsi *relational* lohh. Berikut adalah beberapa contoh ``Realtional Database``
+#### Contoh Relational Database
+
+Tidak semua _database_ memiliki fungsi _relational_ lohh. Berikut adalah beberapa contoh `Realtional Database`
 
 - MySQL
-Salah satu aplikasi *relational database open source* terbaik yang ada saat ini. Selain itu aplikasi ini juga beberapa lisensi tambahan yang bisa diambil sesuai dengan kebutuhan. ``MySQL`` memberikan kemudahan saat input data dan memiliki performa tinggi.
+  Salah satu aplikasi _relational database open source_ terbaik yang ada saat ini. Selain itu aplikasi ini juga beberapa lisensi tambahan yang bisa diambil sesuai dengan kebutuhan. `MySQL` memberikan kemudahan saat input data dan memiliki performa tinggi.
 
 - MariaDB
-Aplikasi ini sebenarnya dibuat dengan base MySQL dengan beberapa penambahan. MariaDB menambahkan ruangan untuk *engine* dan mengatasi adanya limitasi. Dengan kemampuan ini database menjadi lebih cepat.Salah satu hasil dari *relational database* yang dibuat dengan MariaDB adalah Google, Mozilla, hingga Wikimedia.
+  Aplikasi ini sebenarnya dibuat dengan base MySQL dengan beberapa penambahan. MariaDB menambahkan ruangan untuk _engine_ dan mengatasi adanya limitasi. Dengan kemampuan ini database menjadi lebih cepat.Salah satu hasil dari _relational database_ yang dibuat dengan MariaDB adalah Google, Mozilla, hingga Wikimedia.
 
 - PostgreSQL
-Hampir sama dengan MariaDB, aplikasi ini juga merupakan pengembangan meski masih dalam naungan open source. Kelebihan dari database ini adalah performa dan fleksibilitas yang meningkat saat menangani database. ``PostgreSQL`` juga bisa melakukan pembacaan data yang cepat untuk melakukan analisis. Produk dari database ini adalah Skype dan Instagram.
+  Hampir sama dengan MariaDB, aplikasi ini juga merupakan pengembangan meski masih dalam naungan open source. Kelebihan dari database ini adalah performa dan fleksibilitas yang meningkat saat menangani database. `PostgreSQL` juga bisa melakukan pembacaan data yang cepat untuk melakukan analisis. Produk dari database ini adalah Skype dan Instagram.
 
 ### Non-Relational
-Basis data ``non0relasional`` (sering disebut basis data **NoSQL**) berbeda dari basis data relasional tradisional karena basis data tersebut menyimpan datanya dalam bentuk non-tabular. Sebaliknya, database ini mungkin didasarkan pada struktur data seperti dokumen, JSON, dan format lainnya. Sebuah ``dokumen`` yang sangat rinci sekaligus berisi berbagai jenis informasi berbeda dalam format berbeda. ``Kemampuan`` untuk mencerna dan mengatur berbagai jenis informasi secara berdampingan membuat database non-relasional ini jauh lebih fleksibel dibandingkan database relasional.
+
+Basis data `non0relasional` (sering disebut basis data **NoSQL**) berbeda dari basis data relasional tradisional karena basis data tersebut menyimpan datanya dalam bentuk non-tabular. Sebaliknya, database ini mungkin didasarkan pada struktur data seperti dokumen, JSON, dan format lainnya. Sebuah `dokumen` yang sangat rinci sekaligus berisi berbagai jenis informasi berbeda dalam format berbeda. `Kemampuan` untuk mencerna dan mengatur berbagai jenis informasi secara berdampingan membuat database non-relasional ini jauh lebih fleksibel dibandingkan database relasional.
 
 ![Contoh Dokumen MongoDB](image/Materi_2-Database/2-2.avif)
 
-*Contoh Dokumen Pasien di Pelayanan Kesehatan.*
+_Contoh Dokumen Pasien di Pelayanan Kesehatan._
 
-Basis data ``non-relasional`` sering digunakan ketika sejumlah besar data yang kompleks dan beragam perlu diatur. Misalnya, sebuah toko besar mungkin memiliki *database* di mana setiap pelanggan memiliki dokumennya sendiri yang berisi semua informasi mereka, mulai dari nama dan alamat hingga riwayat pesanan dan informasi kartu kredit. Meskipun formatnya berbeda, masing-masing informasi ini dapat disimpan dalam dokumen yang sama.
+Basis data `non-relasional` sering digunakan ketika sejumlah besar data yang kompleks dan beragam perlu diatur. Misalnya, sebuah toko besar mungkin memiliki _database_ di mana setiap pelanggan memiliki dokumennya sendiri yang berisi semua informasi mereka, mulai dari nama dan alamat hingga riwayat pesanan dan informasi kartu kredit. Meskipun formatnya berbeda, masing-masing informasi ini dapat disimpan dalam dokumen yang sama.
 
-**Basis data** non-relasional sering kali bekerja lebih cepat karena kueri tidak harus melihat beberapa tabel untuk memberikan jawaban, seperti yang sering dilakukan oleh kumpulan ``data relasional``. Oleh karena itu, database non-relasional ``ideal`` untuk menyimpan data yang sering diubah atau untuk aplikasi yang menangani berbagai jenis data. Mereka dapat mendukung aplikasi yang ``berkembang pesat`` yang memerlukan database dinamis yang dapat berubah dengan cepat dan mengakomodasi sejumlah besar data yang kompleks dan tidak terstruktur.
+**Basis data** non-relasional sering kali bekerja lebih cepat karena kueri tidak harus melihat beberapa tabel untuk memberikan jawaban, seperti yang sering dilakukan oleh kumpulan `data relasional`. Oleh karena itu, database non-relasional `ideal` untuk menyimpan data yang sering diubah atau untuk aplikasi yang menangani berbagai jenis data. Mereka dapat mendukung aplikasi yang `berkembang pesat` yang memerlukan database dinamis yang dapat berubah dengan cepat dan mengakomodasi sejumlah besar data yang kompleks dan tidak terstruktur.
 
 #### Kelebihan Non-Relational Database
 
-Kriteria | Kelebihan
-:------ |:----- 
-Organisasi kumpulan data besar-besaran | Di era Big Data, database non-relasional tidak hanya dapat menyimpan informasi dalam jumlah besar, namun juga dapat melakukan query terhadap kumpulan data tersebut dengan mudah. Skala dan kecepatan merupakan keuntungan penting dari database non-relasional.
-Perluasan basis data yang fleksibel | Data tidak statis. Semakin banyak informasi yang dikumpulkan, database non-relasional dapat menyerap titik data baru ini, memperkaya database yang sudah ada dengan tingkat nilai granular baru meskipun database tersebut tidak sesuai dengan tipe data dari informasi yang sudah ada sebelumnya.
-Beberapa struktur data | Data yang kini dikumpulkan dari pengguna memiliki berbagai bentuk, mulai dari angka dan string, hingga konten foto dan video, hingga riwayat pesan. Basis data memerlukan kemampuan untuk menyimpan berbagai format informasi ini, memahami hubungan di antara format tersebut, dan melakukan kueri terperinci. Apa pun format informasi Anda, database non-relasional dapat menyusun tipe informasi berbeda secara bersamaan dalam dokumen yang sama.
-Dibangun untuk cloud | Basis data non-relasional bisa berukuran sangat besar. Dan karena mereka bisa, dalam beberapa kasus, tumbuh secara eksponensial, mereka memerlukan lingkungan hosting yang bisa tumbuh dan berkembang bersama mereka. Skalabilitas yang melekat pada cloud menjadikannya rumah ideal untuk database non-relasional.
+| Kriteria                               | Kelebihan                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| :------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Organisasi kumpulan data besar-besaran | Di era Big Data, database non-relasional tidak hanya dapat menyimpan informasi dalam jumlah besar, namun juga dapat melakukan query terhadap kumpulan data tersebut dengan mudah. Skala dan kecepatan merupakan keuntungan penting dari database non-relasional.                                                                                                                                                                                       |
+| Perluasan basis data yang fleksibel    | Data tidak statis. Semakin banyak informasi yang dikumpulkan, database non-relasional dapat menyerap titik data baru ini, memperkaya database yang sudah ada dengan tingkat nilai granular baru meskipun database tersebut tidak sesuai dengan tipe data dari informasi yang sudah ada sebelumnya.                                                                                                                                                     |
+| Beberapa struktur data                 | Data yang kini dikumpulkan dari pengguna memiliki berbagai bentuk, mulai dari angka dan string, hingga konten foto dan video, hingga riwayat pesan. Basis data memerlukan kemampuan untuk menyimpan berbagai format informasi ini, memahami hubungan di antara format tersebut, dan melakukan kueri terperinci. Apa pun format informasi Anda, database non-relasional dapat menyusun tipe informasi berbeda secara bersamaan dalam dokumen yang sama. |
+| Dibangun untuk cloud                   | Basis data non-relasional bisa berukuran sangat besar. Dan karena mereka bisa, dalam beberapa kasus, tumbuh secara eksponensial, mereka memerlukan lingkungan hosting yang bisa tumbuh dan berkembang bersama mereka. Skalabilitas yang melekat pada cloud menjadikannya rumah ideal untuk database non-relasional.                                                                                                                                    |
 
 #### Contoh Non-Relational Database
+
 - MongoDB
 - Apache Cassandra
 - Apache CocuhDB
@@ -110,13 +116,14 @@ Dibangun untuk cloud | Basis data non-relasional bisa berukuran sangat besar. Da
 Selengkapnya, teman-teman bisa cek pada url berikut [Beberapa Jenis Database Non-Relational](https://www.griyasis.com/10-jenis-database-nosql-terpopuler-2022)
 
 ### Relational Database vs Non-Relational Database
-Kategori | Relational Database | Non-Relational Database
-:------ |:----- | :-----
-Data Model | Berbentuk tabel | Berbentuk dokumen, *key-value*, atau grafik
-Jenis data | Terstruktur | Data terstruktur, semistruktur, hingga tidak terstruktur
-Integritas data | Tinggi dengan kepatuhan **ACID** penuh | Model konsistensi akhir
-Performa | Ditingkatkan dengan menambahkan lebih banyak sumber daya ke server | Ditingkatkan dengan menambahkan lebih banyak simpul server
-Penskalaan | Pensklaan horizontal membutuhkan strategi manajemen data tambahan | Penskalaan horizontal sangatlah mudah.
+
+| Kategori        | Relational Database                                                | Non-Relational Database                                    |
+| :-------------- | :----------------------------------------------------------------- | :--------------------------------------------------------- |
+| Data Model      | Berbentuk tabel                                                    | Berbentuk dokumen, _key-value_, atau grafik                |
+| Jenis data      | Terstruktur                                                        | Data terstruktur, semistruktur, hingga tidak terstruktur   |
+| Integritas data | Tinggi dengan kepatuhan **ACID** penuh                             | Model konsistensi akhir                                    |
+| Performa        | Ditingkatkan dengan menambahkan lebih banyak sumber daya ke server | Ditingkatkan dengan menambahkan lebih banyak simpul server |
+| Penskalaan      | Pensklaan horizontal membutuhkan strategi manajemen data tambahan  | Penskalaan horizontal sangatlah mudah.                     |
 
 ## Data Model
 
@@ -145,30 +152,39 @@ Isi dari PDM kurang lebih sama dengan CDM, tetapi dengan penambahan beberapa atr
 ![Contoh PDM](image/Materi_2-Database/1708081599721.png)
 
 ## Query
+
 Query dalam konteks Database dapat diartikan sebagai capability (kemampuan) database pada komputer untuk menampilkan/menyimpan informasi tertentu. Namun perlu diketahui bahwa kemampuan tersebut hanya berupa pre-defined code artinya jika permintaan tidak sesuai dengan informasi yang tersimpan di database, maka permintaan tidak dapat diproses. Query ini biasanya ditulis dalam SQL (Structures Query Language), sebuah bahasa standar untuk berinteraksi dengan sistem manajemen database relasional
 
 ### Bagian-Bagian Query
+
 Query Database terdiri dari 3 hal berikut:
 
 #### DDL (Data Definition Language)
-Query DDL digunakan untuk mendefinisikan dan mengubah struktur database beserta objeknya seperti tabel, index, dan view. Query ini menggunakan perintah: 
+
+Query DDL digunakan untuk mendefinisikan dan mengubah struktur database beserta objeknya seperti tabel, index, dan view. Query ini menggunakan perintah:
+
 - `CREATE` untuk membuat objek baru dalam database
 - `ALTER` untuk memodifikasi struktur objek yang sudah ada
 - `DROP` untuk menghapus objek dari database
 
 #### DML (Data Manipulation Language)
-Query DML digunakan untuk mengambil dan memanipulasi data yang sudah dibuat pada database. Query ini menggunakan perintah: 
+
+Query DML digunakan untuk mengambil dan memanipulasi data yang sudah dibuat pada database. Query ini menggunakan perintah:
+
 - `SELECT` untuk mengambil data dari satu tabel atau lebih
 - `INSERT` untuk menambahkan data baru ke dalam tabel
 - `UPDATE`untuk memodifikasi data yang sudah ada di dalam tabel
 - `DELETE` untuk menghapus data dari tabel
 
 #### DCL (Data Control Language)
+
 QUery DCL digunakan untuk mengontrol akses ke data dalam database. Query ini menggunakan perintah:
+
 - `GRANT` untuk memberikan hak akses untuk melakukan operasi tertentu pada objek database
 - `REVOKE` untuk mencabut hak akses yang telah diberikan sebelumnya
 
 ### Contoh Query Sederhana
+
 ```sql
 -- Contoh Perintah SELECT
 SELECT [DISTINCT] select_list
@@ -187,7 +203,7 @@ CREATE TABLE table_name1 (
 );
 
 -- Contoh Perintah ALTER TABLE
-ALTER TABLE table_name1   
+ALTER TABLE table_name1
 ADD column_2 datatype;
 
 -- Contoh Perintah GRANT
@@ -198,54 +214,62 @@ REVOKE jenis_hak_akses ON nama_database.nama_tabel FROM 'username'@'host';
 ```
 
 ### Join
+
 Join bisa dikatakan sebagai teknik untuk menggabungkan baris dari dua tabel atau lebih sehingga memungkinkan untuk menciptakan set data yang berasal dari beberapa tabel berdasarkan relasi antar tabel. Jenis join termasuk `INNER JOIN`, `LEFT JOIN`, `RIGHT JOIN`, `CROSS JOIN`, dan `SELF JOIN`.
 
 1. `INNER JOIN` = Digunakan ketika ingin mengembalikan baris saat ada kecocokan di kedua tabel
 2. `LEFT JOIN` = Digunakan ketika ingin mengambil semua baris dari tabel kiri dan baris yang cocok dari tabel kanan. Jika tidak ada kecocokan, maka hasilnya akan `NULL` pada sisi kanan.
 3. `RIGHT JOIN` = Kebalikan dengan `LEFT JOIN`, `RIGHT JOIN` digunakan untuk mengambil semua baris dari tabel kanan dan baris yang cocok dari tabel kiri. Jika tidak ada kecocokan, maka hasilnya akan NULL pada sisi kiri.
-3. `FULL JOIN` = Digunakan ketika ingin mengembalikan semua baris dari kedua tabel. Jika baris dari satu sisi yang tidak memiliki pasangan di sisi lainnya, maka akan menampilkan `NULL`.
-4. `CROSS JOIN` = Join ini akan menghasilkan Cartesian product dari dua tabel, yaitu menggabungkan setiap baris dari tabel pertama dengan setiap baris dari tabel kedua. Biasanya digunakan pada kasus dimana perlu untuk menggabungkan setiap baris dari satu tabel dengan baris tabel lain.
-5. `SELF JOIN` = Digunakan untuk membandingkan baris dalam tabel yang sama karena tabel tersebut di-JOIN-kan dengan dirinya sendiri
+4. `FULL JOIN` = Digunakan ketika ingin mengembalikan semua baris dari kedua tabel. Jika baris dari satu sisi yang tidak memiliki pasangan di sisi lainnya, maka akan menampilkan `NULL`.
+5. `CROSS JOIN` = Join ini akan menghasilkan Cartesian product dari dua tabel, yaitu menggabungkan setiap baris dari tabel pertama dengan setiap baris dari tabel kedua. Biasanya digunakan pada kasus dimana perlu untuk menggabungkan setiap baris dari satu tabel dengan baris tabel lain.
+6. `SELF JOIN` = Digunakan untuk membandingkan baris dalam tabel yang sama karena tabel tersebut di-JOIN-kan dengan dirinya sendiri
 
 > Penggunaan `FULL JOIN` dan `CROSS JOIN` sekilas hampir sama, namun sebenarnya berbeda. `FULL JOIN` digunakan untuk menggabungkan semua baris dari dua tabel, menampilkan semua baris dari kedua sisi dengan nilai `NULL` untuk baris yang tidak cocok. Sedangkan `CROSS JOIN` digunakan untuk membuat kombinasi setiap baris dari dua tabel tanpa mempertimbangkan hubungan atau kecocokan antar baris.
 
 ### Subquery dan Nested Query
+
 Subquery dan Nested Query digunakan untuk membuat query yang lebih kompleks dan dinamis
 
 #### Subquery
+
 Subquery adalah query yang disematkan di dalam query lain. Subquery biasanya ditulis di dalam tanda kurung dan dapat digunakan di berbagai tempat dalam query utama, termasuk di klausa `SELECT`, `FROM`, dan `WHERE`. Subquery sering digunakan untuk memfilter hasil query utama, sebagai sumber data untuk klausa `FROM`, dan menentukan nilai dalam klausa `SELECT` atau `WHERE`. Ada 3 jenis Subquery:
+
 1. **Single-row subquery**: Mengembalikan satu baris dari hasil.
 2. **Multiple-row subquery**: Mengembalikan beberapa baris.
 3. **Correlated subquery**: Subquery yang referensinya bergantung pada data dari query utama.
 
 #### Nested Query
+
 Nested Query adalah bentuk khusus dari subquery dimana subquery akan digunakan di dalam subquery lain, sehingga memungkinkan penciptaan struktur query yang lebih kompleks dan bertingkat. Nested Query berguna dalam situasi analisis data kompleks yang mungkin perlu melakukan operasi berlapis. Berikut adalah contoh Nested Query:
 
 - Nested QUery dalam klausa WHERE
   ```sql
-  SELECT * 
-  FROM tabel1 
-  WHERE kolom1 IN (SELECT kolom1 
-                   FROM tabel2 
+  SELECT *
+  FROM tabel1
+  WHERE kolom1 IN (SELECT kolom1
+                   FROM tabel2
                    WHERE kondisi);
   ```
 - Nested QUery dalam klausa FROM
   ```sql
-  SELECT * 
-  FROM (SELECT kolom1, kolom2 
-        FROM tabel1) AS sub_tabel 
+  SELECT *
+  FROM (SELECT kolom1, kolom2
+        FROM tabel1) AS sub_tabel
   WHERE kondisi;
   ```
 
 > Meskipun subquery dan nested query meningkatkan kekuatan SQL, mereka juga bisa membuat query menjadi lebih sulit untuk dibaca dan dipahami
 
 ### Views
+
 Views adalah representasi virtual dari tabel atau kombinasi tabel. Secara esensial, view adalah hasil dari query dan berperilaku seperti tabel. View tidak menyimpan data secara fisik, tetapi data tersebut diambil dari tabel-tabel yang query-nya mendasari view tersebut. Ada beberapa kegunaan ketika menggunakan Views:
+
 1. Dapat membatasi akses pengguna ke data tertentu
 2. Memudahkan query yang kompleks dan berulang, memungkinkan pengguna untuk bekerja dengan hasil query sebagai tabel biasa
 3. Menyediakan lapisan abstraksi dari struktur data yang sebenarnya, memungkinkan pengguna untuk bekerja dengan data tanpa perlu mengetahui detail query yang kompleks
 
 Berikut adalah sintaks dasar Views:
+
 - Membuat View
   ```sql
   CREATE VIEW nama_view AS
@@ -255,8 +279,9 @@ Berikut adalah sintaks dasar Views:
 - Menggunakan View
   ```sql
   SELECT * FROM nama_view;
-  ````
+  ```
 - Mengupdate View
+
   ```sql
   CREATE OR REPLACE VIEW nama_view AS
   SELECT kolom1, kolom2, ...
@@ -264,6 +289,7 @@ Berikut adalah sintaks dasar Views:
 
   -- Akan tetapi tidak semua view dapat diupdate. Hal ini bergantung pada query yang mendasari view tersebut, seperti view yang dibuat dengan fungsi agregasi
   ```
+
 - Menghapus View
   ```sql
   DROP VIEW IF EXISTS nama_view;
@@ -272,11 +298,13 @@ Berikut adalah sintaks dasar Views:
 > Beri nama view dengan cara yang mendeskripsikan isinya agar mudah diidentifikasi.
 
 ### Indexes
+
 Index dalam database SQL adalah struktur data yang meningkatkan kecepatan operasi pada tabel. Index memungkinkan sistem database untuk menemukan dan mengakses baris dalam tabel lebih cepat.
 
 Index bekerja mirip dengan indeks dalam buku, memungkinkan database untuk mencari data tanpa harus membaca seluruh tabel. Index biasanya dibuat pada kolom yang sering digunakan untuk mencari, filter, atau join data.
 
 #### Jenis-jenis Index
+
 1. **Single-Column Index**: Index dibuat untuk satu kolom dalam tabel.
 2. **Composite Index**: Index yang dibuat dari dua atau lebih kolom dalam tabel.
 3. **Unique Index**: Memastikan bahwa dua baris tidak dapat memiliki nilai indeks yang sama.
@@ -284,7 +312,9 @@ Index bekerja mirip dengan indeks dalam buku, memungkinkan database untuk mencar
 5. **Non-Clustered Index**: Membuat struktur terpisah dari data pada tabel yang hanya berisi nilai kunci dan referensi ke data asli.
 
 #### Contoh Penggunaan Index
+
 - Membuat Index
+
   ```sql
   -- Single Index
   CREATE INDEX nama_index ON nama_tabel (kolom1);
@@ -292,12 +322,14 @@ Index bekerja mirip dengan indeks dalam buku, memungkinkan database untuk mencar
   -- Composite Index
   CREATE INDEX nama_index ON nama_tabel (kolom1, kolom2);
   ```
+
 - Menghapus Index
   ```sql
   DROP INDEX nama_index ON nama_tabel;
   ```
 
 #### Kelebihan dan Kekurangan
+
 - Kelebihan
   - Dapat meningkatkan kecepatan query secara signifikan
   - Mengurangi waktu yang dibutuhkan untuk menemukan data dalam tabel besar
@@ -454,3 +486,49 @@ Untuk menjawab pertanyaan-pertanyaan di atas, bis dimulai dengan mencoba membuat
 Skalabilitas serta performa aplikasi juga penting untuk diperhatikan karena database NoSQL biasanya lebih mudah untuk dilakukan scaling dibandingkan database SQL. Kemudian, faktor kesesuaian dengan tech stack yang digunakan juga bisa berpengaruh, misalkan dalam penggunaan bahasa, framework, atau ORM tertentu bisa juga diperhatikan database apa saja yang kira-kira didukung.
 
 Usahakan untuk menentukan database yang paling sesuai dengan sistem sebelum memulai pengembangan. Karena migrasi database terlebih lagi yang sudah banyak isi datanya ke database baru yang sangat berbeda itu berat, kamu ngga akan kuat.
+
+## Implementasi
+
+Setelah mempelajari semua hal di atas terkait Database, kini saatnya kita mengaplikasikan database dalam pekerjaan kita. Bagaimana caranya? Tentunya bergantung pada tech stack serta database yang akan kita gunakan. Sebagai contoh, bila kita ingin menggunakan tech stack yakni Python dengan database MySQL, maka kita dapat mencari library berupa driver yang cocok untuk melakukan integrasi dengan database, dalam hal ini adalah MySQL Driver. Berikut adalah contoh implementasi dari <a href="">W3Schools</a> :
+
+```py
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="yourusername",
+  password="yourpassword",
+  database="mydatabase"
+)
+
+mycursor = mydb.cursor()
+
+mycursor.execute("CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255))")
+```
+
+Sementara itu, misalkan kita memilih menggunakan tech stack yang sama tetapi dengan database yang berbeda, ambil contoh PostgreSQL, maka kita harus menggunakan PostgreSQL Driver yang sesuai dengan tech stack yang kita pilih. Berikut adalah contoh dari implementasi PostgreSQL pada Python dari <a href="">Datacamp</a> :
+
+```py
+conn = psycopg2.connect(
+  database = "datacamp_courses",
+  user = "datacamp",
+  host= 'localhost',
+  password = "postgresql_tutorial",
+  port = 5432)
+
+cur = conn.cursor()
+
+cur.execute("""CREATE TABLE datacamp_courses(
+            course_id SERIAL PRIMARY KEY,
+            course_name VARCHAR (50) UNIQUE NOT NULL,
+            course_instructor VARCHAR (100) NOT NULL,
+            topic VARCHAR (20) NOT NULL);
+            """)
+
+conn.commit()
+
+cur.close()
+conn.close()
+```
+
+Walaupun kedua potongan kode di atas terlihat berbeda, pada dasarnya alur kerjanya tidak jauh berbeda. Mungkin bila diperhatikan, sebelum bisa bermain-main dengan query kedua potongan kode di atas selalu diawali dengan fungsi `connect()`. Sesuai dengan namanya, itu adalah fungsi yang menghubungkan program kita dengan server database yang konfigurasinya kita masukkan ke dalam fungsi sebagai parameter. Biasanya terdapat `host` dari server, `user` yang akan digunakan untuk membuat koneksi dengan database beserta `password`nya, kemudian juga `port` dari server yang biasanya pada PostgreSQL menggunakan 5432 sementara pada MySQL biasanya menggunakan 3306, dan juga `database` untuk memilih database spesifik.
+
+Setelah koneksi terbentuk, barulah kita dapat berinteraksi dengan database sesuai dengan izin atau permission yang dimiliki oleh user yang kita gunakan. Interaksi tentunya dilakukan melalui query seperti yang sudah kita pelajari sebelumnya. Nah, sekarang saatnya kalian melakukan eksplorasi lebih dan mempraktekkan semua yang sudah dipelajari disini, selamat mencoba!
