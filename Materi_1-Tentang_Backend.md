@@ -242,6 +242,7 @@ Jadi admin backend di lab RPL ini yang masih aktif ada :
 
   <img src="image/Materi_1-Tentang_Backend/1708455135329.png" width="300">
 
+  - Lead Backend Developer Intern di Filinmovie (2023)
   - Quality Assurance di PPDB Jatim 2023 (2023)
 
 - M. Naufal Badrutammam (**Cakno**)
