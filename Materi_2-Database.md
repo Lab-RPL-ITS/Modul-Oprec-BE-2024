@@ -145,6 +145,168 @@ Isi dari PDM kurang lebih sama dengan CDM, tetapi dengan penambahan beberapa atr
 ![Contoh PDM](image/Materi_2-Database/1708081599721.png)
 
 ## Query
+Query dalam konteks Database dapat diartikan sebagai capability (kemampuan) database pada komputer untuk menampilkan/menyimpan informasi tertentu. Namun perlu diketahui bahwa kemampuan tersebut hanya berupa pre-defined code artinya jika permintaan tidak sesuai dengan informasi yang tersimpan di database, maka permintaan tidak dapat diproses. Query ini biasanya ditulis dalam SQL (Structures Query Language), sebuah bahasa standar untuk berinteraksi dengan sistem manajemen database relasional
+
+### Bagian-Bagian Query
+Query Database terdiri dari 3 hal berikut:
+
+#### DDL (Data Definition Language)
+Query DDL digunakan untuk mendefinisikan dan mengubah struktur database beserta objeknya seperti tabel, index, dan view. Query ini menggunakan perintah: 
+- `CREATE` untuk membuat objek baru dalam database
+- `ALTER` untuk memodifikasi struktur objek yang sudah ada
+- `DROP` untuk menghapus objek dari database
+
+#### DML (Data Manipulation Language)
+Query DML digunakan untuk mengambil dan memanipulasi data yang sudah dibuat pada database. Query ini menggunakan perintah: 
+- `SELECT` untuk mengambil data dari satu tabel atau lebih
+- `INSERT` untuk menambahkan data baru ke dalam tabel
+- `UPDATE`untuk memodifikasi data yang sudah ada di dalam tabel
+- `DELETE` untuk menghapus data dari tabel
+
+#### DCL (Data Control Language)
+QUery DCL digunakan untuk mengontrol akses ke data dalam database. Query ini menggunakan perintah:
+- `GRANT` untuk memberikan hak akses untuk melakukan operasi tertentu pada objek database
+- `REVOKE` untuk mencabut hak akses yang telah diberikan sebelumnya
+
+### Contoh Query Sederhana
+```sql
+-- Contoh Perintah SELECT
+SELECT [DISTINCT] select_list
+FROM table_source
+[WHERE search_condition]
+[GROUP BY group_by_expression]
+[HAVING search_condition]
+[ORDER BY order_expression [ASC | DESC] ];
+
+-- Contoh Perintah SELECT pada Tabel
+CREATE TABLE table_name1 (
+  column_1 datatype PRIMARY KEY,
+  column_2 datatype,
+  column_3 datatype,
+  FOREIGN KEY (column_3) REFERENCES table_reference(id_reference)
+);
+
+-- Contoh Perintah ALTER TABLE
+ALTER TABLE table_name1   
+ADD column_2 datatype;
+
+-- Contoh Perintah GRANT
+GRANT jenis_hak_akses ON nama_database.nama_tabel TO 'username'@'host';
+
+-- Contoh Perintah REVOKE
+REVOKE jenis_hak_akses ON nama_database.nama_tabel FROM 'username'@'host';
+```
+
+### Join
+Join bisa dikatakan sebagai teknik untuk menggabungkan baris dari dua tabel atau lebih sehingga memungkinkan untuk menciptakan set data yang berasal dari beberapa tabel berdasarkan relasi antar tabel. Jenis join termasuk `INNER JOIN`, `LEFT JOIN`, `RIGHT JOIN`, `CROSS JOIN`, dan `SELF JOIN`.
+
+1. `INNER JOIN` = Digunakan ketika ingin mengembalikan baris saat ada kecocokan di kedua tabel
+2. `LEFT JOIN` = Digunakan ketika ingin mengambil semua baris dari tabel kiri dan baris yang cocok dari tabel kanan. Jika tidak ada kecocokan, maka hasilnya akan `NULL` pada sisi kanan.
+3. `RIGHT JOIN` = Kebalikan dengan `LEFT JOIN`, `RIGHT JOIN` digunakan untuk mengambil semua baris dari tabel kanan dan baris yang cocok dari tabel kiri. Jika tidak ada kecocokan, maka hasilnya akan NULL pada sisi kiri.
+3. `FULL JOIN` = Digunakan ketika ingin mengembalikan semua baris dari kedua tabel. Jika baris dari satu sisi yang tidak memiliki pasangan di sisi lainnya, maka akan menampilkan `NULL`.
+4. `CROSS JOIN` = Join ini akan menghasilkan Cartesian product dari dua tabel, yaitu menggabungkan setiap baris dari tabel pertama dengan setiap baris dari tabel kedua. Biasanya digunakan pada kasus dimana perlu untuk menggabungkan setiap baris dari satu tabel dengan baris tabel lain.
+5. `SELF JOIN` = Digunakan untuk membandingkan baris dalam tabel yang sama karena tabel tersebut di-JOIN-kan dengan dirinya sendiri
+
+> Penggunaan `FULL JOIN` dan `CROSS JOIN` sekilas hampir sama, namun sebenarnya berbeda. `FULL JOIN` digunakan untuk menggabungkan semua baris dari dua tabel, menampilkan semua baris dari kedua sisi dengan nilai `NULL` untuk baris yang tidak cocok. Sedangkan `CROSS JOIN` digunakan untuk membuat kombinasi setiap baris dari dua tabel tanpa mempertimbangkan hubungan atau kecocokan antar baris.
+
+### Subquery dan Nested Query
+Subquery dan Nested Query digunakan untuk membuat query yang lebih kompleks dan dinamis
+
+#### Subquery
+Subquery adalah query yang disematkan di dalam query lain. Subquery biasanya ditulis di dalam tanda kurung dan dapat digunakan di berbagai tempat dalam query utama, termasuk di klausa `SELECT`, `FROM`, dan `WHERE`. Subquery sering digunakan untuk memfilter hasil query utama, sebagai sumber data untuk klausa `FROM`, dan menentukan nilai dalam klausa `SELECT` atau `WHERE`. Ada 3 jenis Subquery:
+1. **Single-row subquery**: Mengembalikan satu baris dari hasil.
+2. **Multiple-row subquery**: Mengembalikan beberapa baris.
+3. **Correlated subquery**: Subquery yang referensinya bergantung pada data dari query utama.
+
+#### Nested Query
+Nested Query adalah bentuk khusus dari subquery dimana subquery akan digunakan di dalam subquery lain, sehingga memungkinkan penciptaan struktur query yang lebih kompleks dan bertingkat. Nested Query berguna dalam situasi analisis data kompleks yang mungkin perlu melakukan operasi berlapis. Berikut adalah contoh Nested Query:
+
+- Nested QUery dalam klausa WHERE
+  ```sql
+  SELECT * 
+  FROM tabel1 
+  WHERE kolom1 IN (SELECT kolom1 
+                   FROM tabel2 
+                   WHERE kondisi);
+  ```
+- Nested QUery dalam klausa FROM
+  ```sql
+  SELECT * 
+  FROM (SELECT kolom1, kolom2 
+        FROM tabel1) AS sub_tabel 
+  WHERE kondisi;
+  ```
+
+> Meskipun subquery dan nested query meningkatkan kekuatan SQL, mereka juga bisa membuat query menjadi lebih sulit untuk dibaca dan dipahami
+
+### Views
+Views adalah representasi virtual dari tabel atau kombinasi tabel. Secara esensial, view adalah hasil dari query dan berperilaku seperti tabel. View tidak menyimpan data secara fisik, tetapi data tersebut diambil dari tabel-tabel yang query-nya mendasari view tersebut. Ada beberapa kegunaan ketika menggunakan Views:
+1. Dapat membatasi akses pengguna ke data tertentu
+2. Memudahkan query yang kompleks dan berulang, memungkinkan pengguna untuk bekerja dengan hasil query sebagai tabel biasa
+3. Menyediakan lapisan abstraksi dari struktur data yang sebenarnya, memungkinkan pengguna untuk bekerja dengan data tanpa perlu mengetahui detail query yang kompleks
+
+Berikut adalah sintaks dasar Views:
+- Membuat View
+  ```sql
+  CREATE VIEW nama_view AS
+  SELECT kolom1, kolom2, ...
+  FROM tabel;
+  ```
+- Menggunakan View
+  ```sql
+  SELECT * FROM nama_view;
+  ````
+- Mengupdate View
+  ```sql
+  CREATE OR REPLACE VIEW nama_view AS
+  SELECT kolom1, kolom2, ...
+  FROM tabel;
+
+  -- Akan tetapi tidak semua view dapat diupdate. Hal ini bergantung pada query yang mendasari view tersebut, seperti view yang dibuat dengan fungsi agregasi
+  ```
+- Menghapus View
+  ```sql
+  DROP VIEW IF EXISTS nama_view;
+  ```
+
+> Beri nama view dengan cara yang mendeskripsikan isinya agar mudah diidentifikasi.
+
+### Indexes
+Index dalam database SQL adalah struktur data yang meningkatkan kecepatan operasi pada tabel. Index memungkinkan sistem database untuk menemukan dan mengakses baris dalam tabel lebih cepat.
+
+Index bekerja mirip dengan indeks dalam buku, memungkinkan database untuk mencari data tanpa harus membaca seluruh tabel. Index biasanya dibuat pada kolom yang sering digunakan untuk mencari, filter, atau join data.
+
+#### Jenis-jenis Index
+1. **Single-Column Index**: Index dibuat untuk satu kolom dalam tabel.
+2. **Composite Index**: Index yang dibuat dari dua atau lebih kolom dalam tabel.
+3. **Unique Index**: Memastikan bahwa dua baris tidak dapat memiliki nilai indeks yang sama.
+4. **Clustered Index**: Menyusun baris fisik data dalam tabel berdasarkan kunci indeks.
+5. **Non-Clustered Index**: Membuat struktur terpisah dari data pada tabel yang hanya berisi nilai kunci dan referensi ke data asli.
+
+#### Contoh Penggunaan Index
+- Membuat Index
+  ```sql
+  -- Single Index
+  CREATE INDEX nama_index ON nama_tabel (kolom1);
+
+  -- Composite Index
+  CREATE INDEX nama_index ON nama_tabel (kolom1, kolom2);
+  ```
+- Menghapus Index
+  ```sql
+  DROP INDEX nama_index ON nama_tabel;
+  ```
+
+#### Kelebihan dan Kekurangan
+- Kelebihan
+  - Dapat meningkatkan kecepatan query secara signifikan
+  - Mengurangi waktu yang dibutuhkan untuk menemukan data dalam tabel besar
+- Kekurangan
+  - Membutuhkan ruang penyimpanan tambahan
+  - Operasi `INSERT`, `UPDATE`, dan `DELETE` bisa menjadi lebih lambat karena index juga perlu diperbarui
+  - Tidak semua kolom cocok untuk diindeks sehingga perlu berhati-hati dalam membuat index
+
+> Membuat terlalu banyak index dapat memperlambat operasi penulisan.
 
 ## Transaction
 
