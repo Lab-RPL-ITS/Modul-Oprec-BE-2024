@@ -144,7 +144,7 @@ Apa aja sih jobdesc Backend Developer? Berat-berat ga? Dilansir dari [Workable](
 4. Melakukan tes User Interface (UI) untuk mengoptimalkan kinerja aplikasi
 5. Bekerja sama dengan Frontend Developer (kelas sebelah) untuk mengintegrasikan elemen yang dihadapkan kepada user dengan logika server-side
 6. Mengumpulkan dan menangani persyaratan teknis dan desain, serta memberikan pelatihan dan dukungan kepada tim internal
-7. Membangun kode dan library untuk penggunaan aplikasi di semester depan
+7. Membangun kode dan library untuk penggunaan aplikasi di masa depan
 8. Bekerja sama dengan pengembang lain, desainer, dan administrator sistem untuk mengidentifikasi fitur baru
 9. Mengikuti perkembangan teknologi terbaru
 
