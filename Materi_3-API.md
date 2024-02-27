@@ -292,3 +292,23 @@ func DownloadFromCloud(srcPath string, dstPath string) error {
 ```
 
 ## Pemilihan
+
+Nah, sekarang kita masuk ke pertanyaan yang juga cukup membuat bingung para developer yakni bagaimana cara memilih tech stack terbaik untuk digunakan dalam membuat API. Jawabannya tidak berbeda jauh dari pemilihan database di materi yang lalu, yakni dengan melakukan analisis terhadap kebutuhan aplikasi kalian terlebih dahulu. Untuk mengetahuinya, coba jawab beberapa pertanyaan berikut,
+
+1. Apakah aplikasi berskala besar dan pembangunannya membutuhkan bantuan banyak library?
+2. Apakah aplikasi memerlukan struktur OOP yang kompleks?
+3. Seberapa banyak kira-kira jumlah pengguna konkuren maksimal yang akan menggunakan aplikasi ini?
+4. Seberapa baik performa yang dibutuhkan pada aplikasi ini?
+5. Apakah aplikasi perlu untuk diintegrasikan dengan sesuatu yang lain?
+
+Skala aplikasi dan kebutuhan library akan mempengaruhi pemilihan tech stack karena beberapa framework seperti Laravel memiliki banyak built-in library yang sangat memudahkan developer untuk membangun aplikasi, begitu juga dengan bahasa-bahasa seperti Python dan JavaScript yang juga memiliki banyak library eksternal sehingga sangat memudahkan. Hal ini berbeda dengan bahasa seperti C dan Golang yang cukup mengharuskan developer untuk menulis sendiri kode yang diperlukan karena tidak semudah itu mencari library yang sesuai. Perlu diingat dalam menggunakan library harus dipastikan asal, pembuat, serta status maintenancenya karena penggunaan library yang kurang dimaintain oleh penggunanya akan buruk bagi aplikasi di masa depan.
+
+Pilihan bahasa yang dapat digunakan untuk membangun sebuah API juga terbagi menjadi beberapa jenis sehingga perlu dijadikan bahan pertimbangan pula. Misalkan aplikasi memerlukan struktur OOP yang kompleks, maka sebaiknya menggunakan bahasa bertipe Object-Oriented seperti PHP atau Python daripada bahasa bertipe Procedural seperti Golang atau C. Ada juga jenis lain yang perlu diperhatikan yakni pemilihan bahasa tipe interpreted dan compiled yang bisa dicari kelebihan serta kekurangannya melalui internet seperti pada <a href="https://forum.upbatam.ac.id/index.php/cbis/article/view/6583">artikel ini</a>.
+
+Jumlah pengguna konkuren dan performa yang dibutuhkan juga merupakan faktor penting dalam memilih tech stack karena setiap tech stack memiliki performa dan kemampuan menghandle concurrency yang berbeda. Untuk mengetahui mana yang terbaik, kalian bisa mencari informasi melalui internet, misalkan melalui komparasi performa benchmarking seperti yang dapat dilihat <a href="https://medium.com/deno-the-complete-reference/list-of-all-of-my-real-world-performance-comparisons-a8e9182ac50">disini</a>.
+
+Kemudian, hal-hal yang perlu diintegrasikan pada aplikasi juga berpengaruh, seperti misalnya untuk aplikasi mobile kebanyakan menggunakan Firebase karena kesesuaian dan kemudahan dalam proses pembangunan aplikasi. Selain itu, misalkan aplikasi memerlukan integrasi dengan ML atau AI, maka seringkali menggunakan framework dari bahasa Python seperti FastAPI untuk mempermudah pekerjaan.
+
+Satu hal lagi yang tidak kalah penting adalah penyesuaian tech stack kemampuan dan pengalaman tim developernya, karena tentu diperlukan kemampuan yang mumpuni serta pengalaman yang cukup untuk bisa membangun aplikasi yang baik, terampil, dan terjamin efektivitasnya. Tetapi, seorang developer yang terikat ke 1 tech stack saja tentunya kurang baik karena kurang dalam segi fleksibilitas, sehingga diperlukan pemahaman secara fundamental dan bukan hanya pemahaman pada tech stack tertentu untuk menjadi seorang developer yang handal dan mampu beradaptasi dengan tech stack apapun.
+
+Untuk detail lebih lanjutnya dalam mencari tech stack yang terbaik tentu bergantung pada kebutuhan masing-masing sehingga harus dilakukan riset mendalam sebelum fiksasi tech stack dengan membaca-baca pendapat profesional, artikel, dokumen, maupun internet terkait kelebihan dan kekurangan masing-masing tech stack seperti yang ada pada <a href="https://techwings.com/blog/backend-frameworks-ultimate-comparison">web ini</a>.
