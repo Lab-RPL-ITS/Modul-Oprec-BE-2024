@@ -19,7 +19,10 @@
   - [Encryption](#encryption)
   - [Hash](#hash)
 - [Authorization](#authorization)
-- [Store & View File](#store--view-file)
+- [File Handling](#file-handling)
+  - [Database](#database)
+  - [Server Storage](#server-storage)
+  - [Cloud Storage](#cloud-storage)
 - [Pemilihan](#pemilihan)
 
 ## Pengantar
@@ -141,6 +144,151 @@ bcrypt
 
 ## Authorization
 
-## Store & View File
+Bila Authentication / Autentikasi adalah tentang memastikan seorang pengguna dengan kredensial yang sesuai dapat masuk dan menggunakan service yang tersedia, Authorization / Otorisasi adalah menentukan bagian yang dapat atau tidak dapat diakses oleh seorang pengguna yang telah terverifikasi. Maka, bila membicarakan tentang authorization kurang lebih sama dengan membicarakan tentang role karena bisanya authorization diterapkan dalam bentuk role atau yang disebut dengan Role-based Authorization atau Role-based Access Control (RBAC).
+
+![RBAC](image/Materi_3-API/1709027733788.png)
+
+Bentuk Authorization paling simple dan sering ditemui ialah adanya role User dan Admin yang dapat digambarkan dengan atribut `is_admin` pada entitas User. Tentu bila bernilai 1 maka menandakan pengguna tersebut adalah Admin dan berlaku sebaliknya. Penerapan dari atribut ini sendiri ada pada admin yang akan diarahkan ke halaman admin dashboard segera setelah masuk dan mempunyai hak serta izin untuk melakukan aksi-aksi admin seperti menampilkan seluruh pengguna, menghapus pengguna, dan lain-lain bergantung dari aplikasinya. Di sisi lain, User biasa akan diarahkan ke halaman khusus pengguna dengan izin yang terbatas hanya bagi pengguna sehingga tidak dapat menggunakan fitur admin yang bila dipaksakan akan mengembalikan HTTP status 401 (Unauthorized).
+
+Tentunya tidak hanya terbatas disana, role yang disediakan bisa sangatlah banyak bergantung dari kebutuhan aplikasi sehingga atribut `is_admin` haruslah diganti menjadi atribut `role` atau bahkan tabel `role` tersendiri yang dapat mengakomodasi banyak peran. Sebagai contoh, untuk sebuah organisasi besar yang terdiri dari beberapa divisi seperti Marketing, Bisnis, Teknologi, Pengembangan Produk, dan lain-lain. Tentunya akses serta fitur yang diperlukan oleh masing-masing divisi akan berbeda bergantung dari jobdesc mereka masing-masing sehingga bagi yang tidak berkebutuhan dilarang untuk mengakses bagian tertentu.
+
+Misalkan terdapat beberapa role yang ingin dibuat untuk mempunyai akses di suatu fitur yang sama sehingga terjadi irisan, kita juga bisa membuat tabel `permission` yang kemudian terhubung dengan tabel `role` melalui suatu tabel semacam `role has permission`. Untuk penerapannya sendiri dapat digunakan middleware ataupun tidak, sebagai contoh pada aplikasi yang dibuat dengan Laravel (PHP) akan berbentuk kurang lebih sebagai berikut,
+
+```php
+// Melalui Middleware
+Route::group(['middleware' => ['role:admin']], function () {});
+
+Route::group(['middleware' => ['permission:create post']], function () {});
+
+// Tanpa Middleware
+if ($user->hasRole('admin')) {}
+
+if ($user->hasPermissionTo('create post')) {}
+```
+
+Untuk penerapan middleware pada Authorization menggunakan Gin (Golang) sebagai berikut,
+
+```go
+routes := route.Group("/api/url_shortener")
+{
+  routes.POST("", urlShortenerController.Create)
+
+  routes.GET("/:id", middleware.Authenticate(jwtService, userServices, roleHasPermissionService, permissionService, "user_url_shortener.index"), urlShortenerController.GetUrlShortenerPrivate)
+
+  routes.GET("/public/:id", urlShortenerController.GetUrlShortenerPublic)
+
+  routes.DELETE("/:id", middleware.Authenticate(jwtService, userServices, roleHasPermissionService, permissionService, "user_url_shortener.delete"), urlShortenerController.DeleteUrlShortener)
+
+  routes.PATCH("/:id", middleware.Authenticate(jwtService, userServices, roleHasPermissionService, permissionService, "user_url_shortener.update"), urlShortenerController.UpdateUrlShortener)
+}
+```
+
+## File Handling
+
+Kebanyakan aplikasi saat ini memerlukan penyimpanan file untuk menjalankan fitur-fiturnya, termasuk dengan menampilkan file yang disimpan tadi. File-file yang diperlukan pun bisa beragam jenisnya, bisa berupa pdf, gambar, video, dan lain-lain. Maka dari itu, kita sebagai Backend Developer pun harus tau cara melakukannya.
+
+Untuk dapat mengupload file ke API, content type yang harus dikirim dari pengguna atau sisi Frontend pada header request HTTP akan berbeda dari biasanya, yakni umumnya menggunakan tipe `multipart/form-data`. Untuk menerima request dalam bentuk file tersebut juga harus menggunakan tipe data tertentu, seperti misalnya dalam Golang dapat digunakan `*multipart.FileHeader`.
+
+Secara umum, terdapat 4 pilihan metode yang dapat kita gunakan untuk menyimpan dan menampilkan file melalui API yang akan dibahas pada bagian ini.
+
+### Database
+
+Kita dapat menyimpan file dalam database, hal ini karena pada dasarnya sebuah file baik itu pdf, gambar, maupun video terdiri dari banyak karakter-karakter sehingga dapat disimpan dalam atribut bertipe TEXT. Bahkan database juga ada yang mempunyai tipe data khusus untuk menyimpan file seperti VARBINARY atau FILESTREAM pada SQL Server.
+
+Tetapi cara ini sangat jarang digunakan, mengapa? Tentunya karena cara ini mempunyai dampak negatif walaupun juga terdapat dampak positifnya. Salah satunya adalah file memakan jumlah penyimpanan yang besar sehingga sangat tidak direkomendasikan untuk menggunakan database yang jauh lebih mahal dibanding filesystem. Kemudian, dari segi performa, read dan write terhadap database lebih lambat dibandingkan filesystem sehingga tentu akan berakibat buruk bagi aplikasi. Meskipun begitu, ada juga dampak positif dari penyimpanan di database seperti properti ACID dan keamanan yang terjamin, penyimpanan lebih tersentralisasi, backup lebih mudah, dan lain-lain.
+
+Karena dampak negatifnya yang cukup berat, maka database biasanya dipergunakan untuk menyimpan path atau id dari file yang disimpan di tempat lain saja.
+
+### Server Storage
+
+Nah, opsi yang lebih baik dan lebih sering digunakan adalah menyimpan file pada Server Storage atau Filesystem dari Server itu sendiri. Apabila menggunakan cara ini, maka database akan kita gunakan untuk menyimpan file path tempat suatu file spesifik disimpan pada filesystem server kita.
+
+Dengan cara ini, API kita tinggal mengupload file ke server dan menyimpan file path tempat file berada pada database. Kemudian bila nanti file perlu untuk ditampilkan, API kita tinggal melakukan read terhadap file berdasarkan file path yang disimpan di database.
+
+Kelebihan dari cara ini adalah read / write yang lebih cepat dan harga yang lebih murah dari database. Tetapi untuk cara ini, kita harus menyiapkan server yang cukup besar dari segi storage agar bisa menampung file yang cukup banyak dan harus selalu melakukan maintenance, menjaga keamanan, dan mengurus skalabilitas dari server kita sendiri.
+
+Berikut adalah contoh implementasi upload file dan juga read file di filesystem server pada Golang:
+
+```go
+// Upload File
+err = os.WriteFile(filePath, fileData, 0666)
+if err != nil {
+  return err
+}
+
+// Read File
+_, err := os.Stat(filePath)
+if err != nil {
+  return err
+}
+```
+
+### Cloud Storage
+
+Opsi terakhir yang juga sering digunakan adalah menggunakan Cloud Storage untuk menyimpan file-file kita. Contoh service yang tersedia dan sering digunakan seperti Amazon S3, Google Buckets, dan Cloudinary. Nantinya, yang kita simpan pada database kita bisa berupa id dari file pada cloud storage atau langsung berupa link yang dapat digunakan untuk mengakses suatu file spesifik pada cloud storage kita.
+
+Dengan cara ini, API kita akan melakukan upload ke Cloud Storage yang kita telah siapkan dan menyimpan ID / Linknya untuk disimpan pada database. Untuk menampilkan file, kita bisa mendapatkan file melalui Cloud Storage berdasarkan yang kita simpan pada database tadi.
+
+Kelebihan dari cara ini adalah harga yang cenderung lebih murah daripada membeli suatu physical server dengan size fix karena cloud storage biasanya menyediakan harga yang sesuai dengan pemakaian terkini, sehingga cara ini cocok apabila kita ingin menggunakan server yang tidak terlalu besar dalam segi storage. Selain itu, untuk masalah keamanan, skalabilitas, dan maintenance juga akan dihandle sepenuhnya oleh pihak mereka sehingga kita tidak perlu pusing mengurusnya.
+
+Akan tetapi, kelebihan yang kedua justru dapat menjadi fatal apabila kita salah memilih service karena sebenarnya bergantung pada third-party tidaklah baik karena ketika mereka mengalami down, sistem kita juga tidak akan bisa berfungsi dengan baik dan kita pun tidak bisa berbuat apa-apa selain menunggu mereka memperbaiki masalah di sisi mereka. Maka dari itu, kita harus benar-benar memilih third-party service client yang terpercaya dan memiliki nama yang baik.
+
+Contoh implementasi upload dan download file dari cloud storage yang dalam hal ini adalah Google Bucket dari Google Cloud Platform (GCP) dengan menggunakan bahasa yang sama untuk komparasi yakni Go sebagai berikut,
+
+```go
+// Upload File
+func UploadToCloud(file *multipart.FileHeader, path string) error {
+	storageClient, err := storage.NewClient(context.TODO(), option.WithCredentialsFile("keys.json"))
+	if err != nil {
+		return err
+	}
+	defer storageClient.Close()
+
+	storageWriter := storageClient.Bucket(bucketName).Object(path).NewWriter(context.TODO())
+	defer storageWriter.Close()
+
+	openedFile, err := file.Open()
+	if err != nil {
+		return err
+	}
+
+	if _, err := io.Copy(storageWriter, openedFile); err != nil {
+		return err
+	}
+
+	return nil
+
+}
+
+// Download File
+func DownloadFromCloud(srcPath string, dstPath string) error {
+	fmt.Println(srcPath)
+	f, err := os.Create(dstPath)
+	if err != nil {
+		return err
+	}
+
+	storageClient, err := storage.NewClient(context.TODO(), option.WithCredentialsFile("keys.json"))
+	if err != nil {
+		return err
+	}
+
+	storageReader, err := storageClient.Bucket(bucketName).Object(srcPath).NewReader(context.TODO())
+	if err != nil {
+		return err
+	}
+	defer storageReader.Close()
+
+	if _, err := io.Copy(f, storageReader); err != nil {
+		return err
+	}
+
+	if err = f.Close(); err != nil {
+		return err
+	}
+
+	return nil
+}
+```
 
 ## Pemilihan
