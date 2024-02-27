@@ -8,6 +8,7 @@
   - [Unit Test](#unit-test)
   - [Integration / Feature Test](#integration--feature-test)
   - [Functional / Acceptance Test](#functional--acceptance-test)
+  - [Contoh Implementasi](#contoh-implementasi)
 - [Dokumentasi](#dokumentasi)
 
 ## Arsitektur Codebase
