@@ -12,6 +12,97 @@
 - [Dokumentasi](#dokumentasi)
 
 ## Arsitektur Codebase
+Sebelumnya kita telah membuat aplikasi Go yang lebih terstruktur. Struktur tersebut memisahkan beberapa implementasi sehingga kode yang ditulis lebih rapi. Sejatinya, tidak ada struktur / arsitektur yang secara resmi dinyatakan oleh para developer Golang. Anda bisa membuat sendiri struktur yang seperti apa yang nyaman untuk dipakai. Selain itu, ada beberapa referensi arsitektur yang mungkin tidak asing di telinga kita seperti *Onion Architecture*, *Model-View-Controller (MCV)*, *Clean Architecture*, *Event-Driven Architecture* dan lain-lain. Pada modul kali ini kita akan membahas terkait *Clean Architecture*. 
+
+### Clean Architecture
+
+<img src="image/Materi_4-Extras/4-1.jpg">
+
+**Clean Architecture** adalah sebuah arstektur sistem yang digagas oleh *Robert C. Martin (Uncle Bob)*. Clean Architecture memisahkan elemen-elemen desain ke dalam kelompok sehingga memenuhi prinsip-prinsip perangkat lunak yang baik, seperti berikut
+
+- Independen terhadap framework perangkat lunak yang dibuat tidak terikat terhadap keadaan library ataupun framework, sehingga membuat penggunaan framework lebih sebagai alat dibandingkan menggunakan framework untuk membangun seluruh aplikasi.
+- Dapat melakukan testing Alur bisnis dapat diuji tanpa UI, database, web server, ataupun elemen external lainnya. 
+- Independen terhadap UI, UI dapat berubah sewaktu-waktu dan perangkat lunak (utamanya di alur bisnis) tidak perlu ikut diubah.
+- Independen terhadap database, Database yang digunakan dapat ditukar (SQL menjadi MongoDB dan alur bisnis tidak terikat ke database).
+- Independen terhadap elemen eksternal apa pun, Alur bisnis seharusnya tidak tahu tentang dunia luar.
+
+#### Implementasi Clean Architecture
+Kita akan mencoba mengimplementasikan **Clean Architecture** yang umum dipakai pada bahasa pemrograman ``Golang``. Pada arsitektur ini, aplikasi akan dibagi menjadi beberapa bagian sesuai dengan struktur folder aplikasi.
+
+<p align="center">
+  <img src="image/Materi_4-Extras/4-2.png">
+</p>
+
+Penjelasan tiap-tiap folder :
+- **config**
+Folder ini digunakan untuk kode terkait konfigurasi, contohna seperti konfigurasi database, SMTP Email, dan sebagainya.
+- **controller**
+Folder ini digunakan untuk kode terkait controller, controller adalah bagian dari program yang berfungsi menerima request dan memberikan response kepada *client*.
+- **dto**
+Folder ini digunakan untuk kode terkait dto, dto atau data transfer object adalah placeholder atau wadah suatu objek yang digunakan untuk menampung data request dan response
+- **entity**
+Folder ini digunakan untuk kode terkait entitas/model pada program.
+- **middleware**
+Folder ini digunakan untuk kode terkait middleware. Middleware adalah perangkat lunak yang menengahi suatu operasi. Maksudnya disini adalah middleware bertindak sebagai perantara antara berbagai komponen perangkat lunak, seperti server, aplikasi,i yang memungkinkan mereka berkomunikasi dan berinteraksi secara efisien. Fungsi middleware ini biasanya meliputi pengelolaan permintaan HTTP, otentikasi pengguna, pengolahan pesan, dan masih banyak lagi. Dengan adanya folder khusus untuk middleware dalam proyek perangkat lunak, para pengembang dapat dengan mudah mengatur dan mengelola middleware yang diperlukan untuk aplikasi mereka. Ini membantu meningkatkan skalabilitas, keamanan, dan kinerja aplikasi dengan lebih baik. Middleware juga dapat membantu dalam implementasi logika bisnis, pemantauan error, dan penanganan perubahan data.
+- **repository**
+Folder ini digunakan untuk kode terkait repository. Repository adalah lapisan yang berhubungan langsung dengan database.
+- **routes**
+Folder ini digunakan untuk kode terkait routing.
+- **service**
+Folder ini digunakan untuk kode terkait service. Service adalah lapisan yang berhubungan dengan logika/alur bisnis aplikasi.
+- **utils**
+Folder ini digunakan untuk kode terkait utilitas lainnya, contohnya seperti kode untuk perhitungan yang akan digunakan di banyak package lainnya.
+
+Alur aplikasi kita akan seperti ini :
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/79066982/222706937-6cbb15e9-3dd3-413b-b9a1-f8bbdfadf96d.png" width="80%" height="40%">
+</p>
+
+Dapat dilihat bahwa tiap lapisan menimbulkan keterkaitan (dependensi) pada lapisan lainnya di bawahnya. Hal ini dapat dilakukan dengan istilah *dependency injection*. Berikut adalah contoh dependency injection di golang yang terdapat pada repository, service, dan controller.
+
+**Repository**
+```go
+type userRepository struct {
+  db *gorm.DB
+}
+
+func NewUserRepository(db *gorm.DB) UserRepository {
+  return &userRepository{
+    db: db,
+  }
+}
+```
+
+**Service**
+```go
+type userService struct {
+  userRepo repository.UserRepository
+}
+
+func NewUserService(ur repository.UserRepository) UserService {
+  return &userService{
+    userRepo: ur,
+  }
+}
+```
+
+**Controller**
+```go
+type userController struct {
+  jwtService  service.JWTService
+  userService service.UserService
+}
+
+func NewUserController(us service.UserService, jwt service.JWTService) UserController {
+  return &userController{
+    jwtService:  jwt,
+    userService: us,
+  }
+}
+```
+
+Logikanya adalah **userService** memerlukan **userRepo**, maka saat membuat **userService**, kita akan memasukkan **userRepo** sebagai parameternya, **userRepo** juga dibuat sebagai entitas di dala userService. Berlaku juga untuk controller terhadap service. Untuk memahami lebih lengkapnya terkait *Clean Architecture*, kalian bisa melihat Repository yang ada di link berikut https://github.com/Lab-RPL-ITS/go-clean-architecture  
 
 ## Automation Test
 
