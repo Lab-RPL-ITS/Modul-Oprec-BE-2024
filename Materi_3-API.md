@@ -256,6 +256,8 @@ func Migrate(db *gorm.DB) error {
 }
 ```
 
+Berikut merupakan ``implementasi`` dari **migration**
+
 https://github.com/Caknoooo/go-gin-clean-architecture/assets/92671053/90c6c6a9-6a5b-46e4-a068-33f0de693154
 
 
@@ -338,6 +340,8 @@ func ListUserSeeder(db *gorm.DB) error {
 	return nil
 }
 ```
+
+Berikut merupakan ``implementasi`` dari **seeder**
 
 https://github.com/Caknoooo/go-gin-clean-architecture/assets/92671053/b869e62c-6e22-4069-bc71-e616ee2dc97e
 
