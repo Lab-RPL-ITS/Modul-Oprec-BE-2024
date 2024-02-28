@@ -4,6 +4,8 @@
 
 - [Daftar Isi](#daftar-isi)
 - [Arsitektur Codebase](#arsitektur-codebase)
+  - [Clean Architecture](#clean-architecture)
+  - [Implementasi Clean Architecture](#implementasi-clean-architecture)
 - [Automation Test](#automation-test)
   - [Unit Test](#unit-test)
   - [Integration / Feature Test](#integration--feature-test)
