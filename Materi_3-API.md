@@ -164,7 +164,7 @@ REST services sendiri haruslah *stateless*, artinya setiap permintaan dari klien
 
 Contoh stateless pada REST:
 
-**Autentikasi**
+**Authentication**
 - Saat klien melakukan permintaan, informasi autentikasi (seperti token) disertakan di header permintaan
 - Contoh:
 
@@ -484,6 +484,182 @@ func main() {
 ```
 
 ## Authentication
+**Autentikasi** adalah pemastian bahwa user tersebut adalah user yang melakukan login saat itu juga. Autentikasi berbeda dengan autorisasi, autorisasi adalah pemastian bahwa seseorang dapat mengakses atau memiliki akses terhadap suatu endpoint. Terdapat banyak jenis autentikasi yang dapat diterapkan pada perangkat lunak, antara lain:
+
+- **Basic Authentication**
+*Basic Authentication* adalah metode autentikasi paling sederhana. Client akan mengirimkan username / email dan password mereka tanpa dienkripsi kepada server. Lalu server akan memastikan kebenaran kredensial tersebut. Username dan password tersebut akan disimpan di header dan diperlukan pada tiap request ke server.
+
+- **Digest Authentication**
+*Digest Authentication* serupa dengan Basic Authentication tetapi data seperti username dan password akan di enkripsi agar data lebih aman.
+
+- **Session Based Authentication**
+*Session Based Authentication* adalah autentikasi yang menyimpan state user di server, setelah user melakukan login, server akan memeriksa kredensial dan menghasilkan sebuah session. Session tersebut akan disimpan di dalam database dan juga browser (dalam bentuk sessionID di cookie). Metode ini lebih aman karena hanya mengirimkan id dari session. Akan tetapi, setiap user memerlukan autorisasi dan autentikasi. Server juga harus memeriksa session yang berkaitan di dalam database.
+
+- **Token Based Authentiaction**
+*Token Based Authentication* adalah sebuah autentikasi dengan menggunakan token dan yang paling umum digunakan saat ini. Salah satu jenis token yang umum digunakan adalah JSON Web Token (JWT). JWT menyimpan data header, payload, dan signature di dalanya untuk memastikan kredensial dari user. Data pada JWT diencode dengan menggunakan standar base64
+
+- **One Time Password**
+*One Time Password* atau biasa disebut OTP ini adalah metode yang cukup umum digunakan. OTP merupakan kode yang dibuat secara acak dan biasanya memiliki waktu kadaluwarsa (Time Based OTP). OTP biasanya digunakan pada sistem yang bersifat sensitif.
+
+- **OAuth dan OpenID**
+*OAuth* adalah metode yang memperbolehkan user login menggunakan single-sign-on (SSO) baik dari media sosial pihak ketiga lainnya. 
+
+#### Middleware
+
+<img src="image/Materi_3-API/3-5.png">
+
+**Middleware** adalah konsep yang umumnya digunakan dalam pengembangan perangkat lunak, terutama dalam aplikasi web. Middleware adalah perangkat lunak yang berada di antara aplikasi atau sistem dan berbagai komponen seperti server atau database. Ini berfungsi untuk memproses atau memodifikasi permintaan dan tanggapan sebelum atau setelah mencapai tujuan akhirnya.
+
+Dalam konteks aplikasi web, middleware digunakan untuk menangani berbagai tugas, seperti autentikasi, otorisasi, logging, caching, atau transformasi data. Middleware beroperasi pada tingkat perantara antara permintaan yang diterima dari klien dan tanggapan yang dikirimkan oleh server.
+
+Berikut adalah beberapa konsep umum terkait middleware dalam pengembangan web:
+
+1. **Autentikasi dan otorisasi**
+Middleware dapat digunakan untuk memeriksa (autentikasi) dan hak akses (otorisasi) sebelum membiarkan akses ke bagian tertentu dari aplikasi.
+2. **Logging**
+Middleware logging dapat mencatat informasi tentang setiap permintaan yang masuk atau tanggapan yang keluar. Ini membantu dalam pemantauan dan pemecahan masalah.
+3. **Caching**
+Middleware dapat memberikan mekanisme caching untuk mempercepat kinerja dengan menyimpan sementara hasil permintaan yang sering digunakan.
+
+Dalam banyak kerangka kerja web, *middleware* sering kali dapat dikonfigurasi dan digunakan dengan cara yang fleksibel. Pengembang dapat menyusun rantai middleware, di mana setiap lapisan middleware berkontribusi pada pemrosesan permintaan dan tanggapan secara berurutan.
+
+Contoh kerangka kerja web yang menggunakan konsep middleware termasuk Express.js untuk Node.js, Django untuk Python, dan Laravel untuk PHP.
+
+
+#### Authentication Implementation
+Kita akan menggunakan **Token Based Authenticatin** menggunakan token JWT. Pada bahasa pemrograman Golang, kita akan menggunakan library https://github.com/golang-jwt. Untuk menginstall package tersebut anda hanya perlu membuka terminal anda dan menjalankan perintah berikut 
+
+```sh
+go get -u https://github.com/golang-jwt
+```
+
+Kode autentikasi akan dijadikan sebagai *middleware* yang menengahi antara router controller. Karena kita menggunakan framework Gin, maka return value dari fungsi middleware kita akan bertipe ``gin.HandlerFunc`` yang berupa sebuah fungsi yang menerima gin.Context. Token akan dibuat setiap user melakukan login. **Token** biasanya disimpan di dalam browser seperti di dalam (localstorage, cookies, dan sebagainya) dan memiliki prefix string “Bearer “ di depannya karena berupa bearer token. Sehingga saat menerima token, token tersebut memiliki format berikut:
+
+```json
+Bearer <token>
+```
+
+Oleh karena itu, kita harus memastikan bahwa string token sesuai dengan ketentuan. Berikut merupakan implementasi ``middleware`` autentikasi JWT
+
+**authentication.go**
+
+```go
+package middleware
+
+import (
+  "net/http"
+  "strings"
+
+  "rpl-simple-backend/utils"
+  "github.com/gin-gonic/gin"
+)
+
+func Authenticate(jwtService service.JWTService) gin.HandlerFunc {
+  return func(ctx *gin.Context) {
+    authHeader := ctx.GetHeader("Authorization")
+    if authHeader == "" {
+      response := utils.BuildResponseFailed("request proses failed", "token not found", nil)
+      ctx.AbortWithStatusJSON(http.StatusUnauthorized, response)
+      return
+    }
+    if !strings.Contains(authHeader, "Bearer ") {
+      response := utils.BuildResponseFailed("request proses failed", "token not valid", nil)
+      ctx.AbortWithStatusJSON(http.StatusUnauthorized, response)
+      return
+    }
+    authHeader = strings.Replace(authHeader, "Bearer ", "", -1)
+    token, err := jwtService.ValidateToken(authHeader)
+    if err != nil {
+      response := utils.BuildResponseFailed("request proses failed", "token not validate", nil)
+      ctx.AbortWithStatusJSON(http.StatusUnauthorized, response)
+      return
+    }
+    if !token.Valid {
+      response := utils.BuildResponseFailed("request proses failed", "failed denied access", nil)
+      ctx.AbortWithStatusJSON(http.StatusUnauthorized, response)
+      return
+    }
+    ctx.Set("token", authHeader)
+    ctx.Next()
+  }
+}
+```
+
+**jwtService.go**
+```go
+type JWTService interface {
+  GenerateToken(userId string, role string) string
+  ValidateToken(token string) (*jwt.Token, error)
+  GetUserIDByToken(token string) (string, error)
+}
+
+type jwtCustomClaim struct {
+  UserID string `json:"user_id"`
+  Role   string `json:"role"`
+  jwt.RegisteredClaims
+}
+
+type jwtService struct {
+  secretKey string
+  issuer    string
+}
+
+func NewJWTService() JWTService {
+  return &jwtService{
+    secretKey: getSecretKey(),
+    issuer:    "Template",
+  }
+}
+
+func getSecretKey() string {
+  secretKey := os.Getenv("JWT_SECRET")
+  if secretKey == "" {
+    secretKey = "Template"
+  }
+  return secretKey
+}
+
+func (j *jwtService) GenerateToken(userId string, role string) string {
+  claims := jwtCustomClaim{
+    userId,
+    role,
+    jwt.RegisteredClaims{
+      ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Minute * 120)),
+      Issuer:    j.issuer,
+      IssuedAt:  jwt.NewNumericDate(time.Now()),
+    },
+  }
+
+  token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+  tx, err := token.SignedString([]byte(j.secretKey))
+  if err != nil {
+    log.Println(err)
+  }
+  return tx
+}
+
+func (j *jwtService) parseToken(t_ *jwt.Token) (any, error) {
+  if _, ok := t_.Method.(*jwt.SigningMethodHMAC); !ok {
+    return nil, fmt.Errorf("unexpected signing method %v", t_.Header["alg"])
+  }
+  return []byte(j.secretKey), nil
+}
+
+func (j *jwtService) ValidateToken(token string) (*jwt.Token, error) {
+  return jwt.Parse(token, j.parseToken)
+}
+
+func (j *jwtService) GetUserIDByToken(token string) (string, error) {
+  t_Token, err := j.ValidateToken(token)
+  if err != nil {
+    return "", err
+  }
+ 
+  claims := t_Token.Claims.(jwt.MapClaims)
+  id := fmt.Sprintf("%v", claims["user_id"])
+  return id, nil
+}
+```
 
 ## Encryption & Hash
 
