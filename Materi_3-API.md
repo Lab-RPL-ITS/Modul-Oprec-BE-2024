@@ -36,54 +36,49 @@
 
 ## HTTP/HTTPS
 <img src="image/Materi_3-API/httpvshttps.jpg">
+
 HTTP (*Hypertext Transfer Protocol*) adalah protokol yang digunakan untuk mengirim dokumen *hypertext* antara server dan client di *World Wide Web*. Protokol ini mendefinisikan bagaimana pesan diformat dan ditransmisikan, serta apa tindakan yang harus diambil oleh *web server* dan *browser* dalam berbagai tahapan komunikasi. <br>
 
 #### Apa sih protokol itu?
 Protokol disini adalah aturan atau standar yang menentukan bagaimana data dikirimkan, diterima, dan diinterpretasikan antar perangkat komputer atau entitas dalam jaringan. Contoh protokol yang umum digunakan ada TCP/IP, UDP, FTP, SMTP, DNS, HTTP, dan HTTPS.
 
-Oke balik ke topik awal lagi. Sedangkan HTTPS (Hypertext Transfer Protocol Secure) merupakan versi aman dari HTTP, protokol dasar untuk komunikasi di World Wide Web. HTTPS menambahkan lapisan enkripsi untuk meningkatkan keamanan data yang ditransfer antara web browser pengguna dan server web. Ini dilakukan melalui penggunaan SSL/TLS (Secure Sockets Layer/Transport Layer Security), yang menyediakan enkripsi, integritas data, dan autentikasi.
+Oke balik ke topik awal lagi. Sedangkan HTTPS (*Hypertext Transfer Protocol Secure*) merupakan versi aman dari HTTP, protokol dasar untuk komunikasi di World Wide Web. HTTPS menambahkan lapisan enkripsi untuk meningkatkan keamanan data yang ditransfer antara web browser pengguna dan server web. Ini dilakukan melalui penggunaan SSL/TLS (*Secure Sockets Layer*/*Transport Layer Security*), yang menyediakan enkripsi, integritas data, dan autentikasi.
 
 ### Cara Kerja Protokol HTTP
 
 <img src="image/Materi_3-API/flow_http.png">
-Protokol HTTP (Hypertext Transfer Protocol) adalah fondasi dari komunikasi data di World Wide Web, memungkinkan web browser dan server web untuk berkomunikasi dengan satu sama lain. Berikut adalah cara kerja dasar dari protokol HTTP:
+
+Protokol HTTP (*Hypertext Transfer Protocol*) adalah pondasi dari komunikasi data di *World Wide Web*, memungkinkan *web browser* dan server web untuk berkomunikasi dengan satu sama lain. Berikut adalah cara kerja dasar dari protokol HTTP:
 
 #### Pembukaan Koneksi
-Koneksi TCP dibuka oleh Client melalui Web browser ke server yang dituju pada port tertentu, biasanya port 80 adalah default port untuk HTTP. Koneksi ini memungkinkan pengiriman dan penerimaan data antara Klien dengan server
+Koneksi TCP dibuka oleh klien melalui Web browser ke server yang dituju pada port tertentu, biasanya port 80 adalah default port untuk HTTP. Koneksi ini memungkinkan pengiriman dan penerimaan data antara Klien dengan server
 
 #### HTTP Request
-Setelah koneksi terbuka, Klien mengirimkan request HTTP ke server. Request ini bisa berupa berbagai metode HTTP, seperti:
-- GET = untuk meminta atau mengambil data yang ada di server
-- POST = untuk mengirim data menuju server
-- PUT = untuk mengganti data dengan yang sudah diperbarui
-- PATCH = mirip dengan PUT, tetapi bisa memilih properti mana aja yang ingin diperbarui
-- DELETE = untuk menghapus data dari database
-
-HTTP request ini meliputi:
-- Request Line = Menyatakan metode HTTP yang digunakan, URL resource yang diminta, dan versi protokol HTTP yang digunakan
-- Headers = Berisi metadata tentang request, misalnya jenis konten, cookie, user agent, dan lain-lain
-- Message Body = Digunakan untuk mengirimkan data ke server, seperti formulir data dan file upload
+Setelah koneksi terbuka, Klien mengirimkan request HTTP ke server. HTTP request ini meliputi:
+- **Request Line** = Menyatakan metode HTTP yang digunakan, URL resource yang diminta, dan versi protokol HTTP yang digunakan
+- **Headers** = Berisi metadata tentang request, misalnya jenis konten, cookies, user agent, dan lain-lain
+- **Message Body** = Digunakan untuk mengirimkan data ke server, seperti formulir data dan file upload
 
 #### HTTP Response
-Server memproses permintaan dan mengirimkan respons kembali ke Klien berupa:
-- Status Line = Menyatakan versi protokol HTTP, kode status, dan teks status
-- Headers = Berisi metadata tentang response, misalnya jenis konten, panjang konten, cookie yang telah di atur oleh server, dan lain-lain
-- Message Body = Berisi konten yang sebenarnya dari response, seperti HTML, data JSON, atau jenis file lainnya
+Server memproses permintaan dan mengirimkan response kembali ke Klien berupa:
+- **Status Line** = Menyatakan versi protokol HTTP, kode status, dan teks status
+- **Headers** = Berisi metadata tentang response, misalnya jenis konten, panjang konten, cookies yang telah di atur oleh server, dan lain-lain
+- **Message Body** = Berisi konten yang sebenarnya dari response, seperti HTML, data JSON, atau jenis file lainnya
 
 #### Penutupan Koneksi
-Setelah transaksi request-response selesai, koneksi TCP biasanya akan tertutup kecuali jika header ‘Connection: keep-alive’ digunakan. Header ini akan membuat koneksi tetap terbuka untuk request berikutnya, sehingga akan mengurangi overhead pembukaan koneksi yang baru
+Setelah transaksi request-response selesai, koneksi TCP biasanya akan tertutup kecuali jika header ```Connection: keep-alive``` digunakan. Header ini akan membuat koneksi tetap terbuka untuk request berikutnya, sehingga akan mengurangi *overhead* pembukaan koneksi yang baru
 
 #### Stateless
-HTTP adalah protokol yang stateless, artinya setiap permintaan dari klien akan dianggap independen dan tidak bergantung pada permintaan sebelumnya sehingga server tidak akan menyimpan informasi dari Klien
+HTTP adalah protokol yang *stateless*, artinya setiap permintaan dari klien akan dianggap independen dan tidak bergantung pada permintaan sebelumnya sehingga server tidak akan menyimpan informasi dari Klien
 
 ### Cara Kerja Protokol HTTPS
-Alur kerja HTTP dan HTTPS memiliki beberapa perbedaan kunci, terutama berkaitan dengan keamanan komunikasi antara klien (seperti browser web) dan server. Perbedaan utama antara HTTP dan HTTPS terletak pada penggunaan lapisan keamanan tambahan pada HTTPS melalui SSL/TLS, yang mengamankan data yang ditransfer melalui enkripsi dan autentikasi. Sementara HTTP lebih cepat dan sederhana dalam implementasi, kurangnya keamanan membuatnya tidak cocok untuk transaksi sensitif atau pertukaran data pribadi. Berikut adalah alur kerja dari HTTPS:
+Alur kerja HTTP dan HTTPS memiliki beberapa perbedaan kunci, terutama berkaitan dengan keamanan komunikasi antara klien dan server. Perbedaan utama antara HTTP dan HTTPS terletak pada penggunaan lapisan keamanan tambahan pada HTTPS melalui SSL/TLS, yang mengamankan data yang ditransfer melalui enkripsi dan autentikasi. Sementara HTTP lebih cepat dan sederhana dalam implementasi, kurangnya keamanan membuatnya tidak cocok untuk transaksi sensitif atau pertukaran data pribadi. Berikut adalah alur kerja dari HTTPS:
 
 #### Pembukaan Koneksi
 Klien membuat permintaan HTTPS ke server dengan memasukkan URL yang menggunakan skema ```https://``` di web browser mereka. Koneksi TCP antara klien dan server biasanya dilakukan melalui port 443
 
 #### Penyajian Sertifikat
-Server akan merespons dengan mengirimkan sertifikat digitalnya ke klien. Sertifikat ini dikeluarkan oleh Certificate Authority (CA) dan berisi informasi publik server, termasuk kunci publiknya, nama serve, masa berlaku dari sertifikat, dan tandatangan digital dari CA
+Server akan merespons dengan mengirimkan sertifikat digitalnya ke klien. Sertifikat ini dikeluarkan oleh *Certificate Authority* (CA) dan berisi informasi publik server, termasuk kunci publiknya, nama serve, masa berlaku dari sertifikat, dan tandatangan digital dari CA
 
 #### Verifikasi Sertifikat
 Klien akan memverifikasi sertifikat tersebut untuk memastikan keaslian server. Proses ini termasuk proses memeriksa apakah sertifikat yang digunakan belum kadaluarsa, diterbitkan oleh CA yang terpercaya, dan digunakan oleh website yang sebenarnya diminta. Jika sertifikat tidak dapat diverifikasi, klien akan menampilkan peringatan keamanan website
@@ -92,15 +87,15 @@ Klien akan memverifikasi sertifikat tersebut untuk memastikan keaslian server. P
 Setelah sertifikat diverifikasi, klien dan server melakukan pertukaran kunci untuk menyetujui kunci enkripsi simetris yang akan digunakan untuk mengamankan sesi komunikasi
 
 #### Enkripsi Komunikasi
-Semua data yang ditransfer termasuk HTTP request, HTTP response, data formulir, cookie, dll, antara klien dan server akan dienkripsi menggunakan kunci simetris yang sudah disepakati untuk melindungi data dari penyadapan dan manipulasi
+Semua data yang ditransfer termasuk request, response, data formulir, cookie, dll, antara klien dan server akan dienkripsi menggunakan kunci simetris yang sudah disepakati untuk melindungi data dari penyadapan dan manipulasi
 
 #### Penutupan Koneksi
 Setelah komunikasi selesai, sesi enkripsi akan ditutup. Kunci simetris yang digunakan di sesi tersebut tidak akan digunakan lagi, sehingga proses negosiasi kunci akan diulang untuk membuat kunci simetris baru pada sesi berikutnya
 
 ## Definisi & Fungsi
-Setelah memahami konsep HTTP dan HTTPS yang berperan sebagai perisai digital ketika berkelana di dunia maya, kita perlu memahami “transportasi” apa yang cocok digunakan ketika berkelana. <br><br>
+Setelah memahami konsep HTTP dan HTTPS yang berperan sebagai perisai digital ketika berkelana di dunia maya, kita perlu memahami "transportasi" apa yang cocok digunakan ketika berkelana. <br><br>
 
-Bayangkan jika internet adalah sebuah kota besar yang ramai dan penuh dengan destinasi menarik. Di kota ini, HTTP dan HTTPS berperan seperti sistem jalan raya yang menghubungkan berbagai lokasi. HTTP adalah jalan raya biasa, di mana informasi bergerak bebas tapi terbuka untuk dilihat siapa saja. Sementara itu, HTTPS seperti jalan raya yang dilengkapi dengan terowongan aman; informasi yang bergerak di dalamnya terlindungi, jadi hanya yang berhak saja yang bisa melihatnya. <br><br>
+Bayangkan jika internet adalah sebuah kota besar yang ramai dan penuh dengan destinasi menarik. Di kota ini, HTTP dan HTTPS berperan seperti sistem jalan raya yang menghubungkan berbagai lokasi. HTTP adalah jalan raya biasa, di mana informasi bergerak bebas tapi terbuka untuk dilihat siapa saja. Sementara itu, HTTPS seperti jalan raya yang dilengkapi dengan terowongan aman. Informasi yang bergerak di dalamnya terlindungi, jadi hanya yang berhak saja yang bisa melihatnya. <br><br>
 
 Nah, di sinilah API masuk sebagai sistem transportasi umum seperti bus, kereta, atau taksi yang ada di kota tersebut. API memudahkan kita untuk 'berpindah' dari satu layanan ke layanan lain, seperti dari media sosial ke layanan cuaca, atau dari toko online ke layanan pengiriman paket, tanpa perlu berjalan kaki atau mengemudi sendiri. Kita cukup memberitahu API tujuan dan ia akan mengantarkan permintaan kita ke tujuan yang tepat dan kembali dengan informasi atau layanan yang kita butuhkan. <br><br>
 
@@ -109,22 +104,22 @@ Dengan kombinasi jalan raya digital HTTPS yang aman dan sistem transportasi umum
 <img src="image/Materi_3-API/rest-api.png">
 
 ### Definisi
-API atau Application Programming Interface adalah mekanisme yang memungkinkan dua komponen perangkat lunak untuk saling berkomunikasi menggunakan serangkaian definisi dan protokol. Sama seperti sistem transportasi umum tadi, API dapat memudahkan pertukaran data dan layanan antara berbagai sistem dan aplikasi. Misalnya, sistem perangkat lunak badan meteorologi, klimatologi, dan geofisika (BMKG) berisi data cuaca harian. Aplikasi cuaca di ponsel akan “berkomunikasi” dengan sistem ini melalui API dan menampilkan pembaruan cuaca harian.
+API atau *Application Programming Interface* adalah mekanisme yang memungkinkan dua komponen perangkat lunak untuk saling berkomunikasi menggunakan serangkaian definisi dan protokol. Sama seperti sistem transportasi umum tadi, API dapat memudahkan pertukaran data dan layanan antara berbagai sistem dan aplikasi. Misalnya, sistem perangkat lunak badan meteorologi, klimatologi, dan geofisika (BMKG) berisi data cuaca harian. Aplikasi cuaca di ponsel akan “berkomunikasi” dengan sistem ini melalui API dan menampilkan pembaruan cuaca harian.
 
 ### Fungsi
 Dari contoh diatas, bisa disimpulkan bahwa Fungsi API ini sangat beragam dan tergantung pada kebutuhan dan tujuan implementasi. Berikut adalah beberapa fungsi umum dari API:
 
-1. Penghubung (Connector) = Seperti yang sudah dijelaskan sebelumnya, API berfungsi sebagai penghubung antara dua aplikasi atau sistem yang berbeda. Ini memungkinkan pertukaran data dan komunikasi antar aplikasi atau sistem. Dengan API, tugas-tugas yang biasanya membutuhkan intervensi manual bisa diotomatisasi, mempercepat proses dan meningkatkan efisiensi.
+1. **Penghubung (*Connector*)** = Seperti yang sudah dijelaskan sebelumnya, API berfungsi sebagai penghubung antara dua aplikasi atau sistem yang berbeda. Ini memungkinkan pertukaran data dan komunikasi antar aplikasi atau sistem. Dengan API, tugas-tugas yang biasanya membutuhkan intervensi manual bisa diotomatisasi, mempercepat proses dan meningkatkan efisiensi.
 
-2. Abstraksi Kompleksitas = API dapat menyembunyikan kompleksitas implementasi internal suatu sistem, dan memberikan antarmuka yang mudah digunakan untuk pengguna.
+2. **Abstraksi Kompleksitas** = API dapat menyembunyikan kompleksitas implementasi internal suatu sistem, dan memberikan antarmuka yang mudah digunakan untuk pengguna.
 
-3. Integrasi Aplikasi = API memungkinkan aplikasi berbeda untuk saling berintegrasi dan berbagi fungsionalitas, sehingga API dapat memperluas dan meningkatkan kemampuan aplikasi tersebut.
+3. **Integrasi Aplikasi** = API memungkinkan aplikasi berbeda untuk saling berintegrasi dan berbagi fungsionalitas, sehingga API dapat memperluas dan meningkatkan kemampuan aplikasi tersebut.
 
-4. Pemberian Layanan Web (Web Services) = Banyak API yang disediakan sebagai layanan web, memfasilitasi pertukaran data melalui protokol HTTP atau HTTPS.
+4. **Pemberian Layanan Web (*Web Services*)** = Banyak API yang disediakan sebagai layanan web, memfasilitasi pertukaran data melalui protokol HTTP atau HTTPS.
 
-5. Optimasi Kinerja = Dengan menggunakan API, kinerja aplikasi dapat dioptimalkan dengan memanfaatkan fungsionalitas yang sudah ada tanpa perlu menulis ulang kode dari awal.
+5. **Optimasi Kinerja** = Dengan menggunakan API, kinerja aplikasi dapat dioptimalkan dengan memanfaatkan fungsionalitas yang sudah ada tanpa perlu menulis ulang kode dari awal.
 
-6. Mendukung Pengembangaan Kolaboratif = API memungkinkan tim developer yang berbeda untuk bekerja secara terpisah pada komponen-komponen yang berbeda dan tetap mengintegrasikan hasil pekerjaan mereka melalui API.
+6. **Mendukung Pengembangaan Kolaboratif** = API memungkinkan tim developer yang berbeda untuk bekerja secara terpisah pada komponen-komponen yang berbeda dan tetap mengintegrasikan hasil pekerjaan mereka melalui API.
 
 ## Macam Arsitektur
 Setelah kita mengerti mengenai ``definisi`` dan ``fungsi`` mengenai API (*Application Programming Interface*). Saatnya kita mengenal istilah baru yaitu ``arsitektur`` pada API. **Arsitektur** pada API terdapat beberapa macam yang umum digunakan, diantaranya adalah:
@@ -275,6 +270,31 @@ Cache-Control: max-age=3600
 Keuntungan dari pendekatan *stateless* adalah meningkatkan skalabilitas dan kinerja server, karena tidak perlu menyimpan atau mengelola status sesi untuk setiap klien. Setiap permintaan dapat diproses independen dan tanpa ketergantungan pada permintaan sebelumnya. Dengan demikian, *stateless* sangat sesuai dengan karakteristik skala web dan aplikasi yang dapat diterapkan di berbagai server yang mendukung permintaan tanpa status.
 
 ## Contoh Tech Stack
+<img src="image/Materi_3-API/contoh-bahasa.png">
+
+Dalam menerapkan arsitektur API yang sudah dibahas diatas, khususnya untuk REST API, berbagai bahasa pemrograman menawarkan tools dan fitur khusus untuk memudahkan pembuatan, pengujian, dan pengelolaan REST API. Berikut adalah beberapa contoh bahasa pemrograman beserta frameworknya yang sering digunakan:
+
+### JavaScript (NodeJS)
+Dengan runtime Node.js, JavaScript menjadi pilihan yang paling populer untuk pembuatan server REST API karena non-blocking I/O dan event-driven nature-nya yang cocok untuk aplikasi real-time dan berbasis IO yang intensif. Contoh framework nya adalah Express.js, yaitu framework JavaScript yang minimalis dan fleksibel sehingga memudahkan pembuatan API dengan rute yang mudah dikelola
+
+### Python
+Python dikenal dengan syntax yang bersih dan mudah dibaca sehingga membuatnya ideal untuk pemula dan profesional. Python sering dipilih untuk proyek yang memerlukan prototyping cepat atau integrasi dengan sistem analitik dan ilmu data. Contoh frameworknya adalah Django REST dan Flask: 
+- **Framework Django REST** menawarkan toolkit yang kuat untuk membangun API yang browseable dengan autentikasi yang aman dan serialisasi yang komprehensif. 
+- **Framework Flask** diklaim lebih ringan daripada Django REST yang menawarkan fleksibilitas lebih dalam pembuatan API dengan ekstensi yang dapat ditambahkan sesuai kebutuhan
+
+### Java
+Java menjadi salah satu pilihan populer dalam membangun aplikasi skala besar dan kompleks karena performa, keamanan, dan portabilitasnya. Contoh frameworknya adalah Spring Boot dan Jersey:
+- **Framework Spring Boot** menawarkan pembuatan aplikasi berbasis microservices dan REST API dengan konfigurasi minimal dan dukungan untuk berbagai layanan enterprise
+- **Framework Jersey** mengimplementasi referensi dari JAX-RS, yaitu Java API untuk RESTful Web Services yang memungkinkan pembuatan REST API di Java dengan fitur yang sangat lengkap
+
+### Go
+Go atau Golang dirancang khusus oleh Google untuk memudahkan pengembangan software yang efisien dan scalable. Golang menawarkan kecepatan eksekusi,  kemudahan konkurensi, dan kemudahan penggunaan untuk pembuatan API dengan performa yang tinggi. Contoh frameworknya adalah Gin Gonic yang diklaim sebagai framework tercepat di Go. Gin menawarkan dukungan middleware yang dapat digunakan untuk memperluas fungsionalitas seperti logging, CORS, dan lain-lain.
+
+### PHP
+Meskipun PHP mungkin tidak sepopuler Node.js atau Python untuk proyek baru, masih banyak digunakan untuk API RESTful, terutama dalam proyek yang sudah ada atau yang memanfaatkan CMS seperti WordPress. Contoh framework yang biasa digunakan adalah Laravel dan Lumen:
+- **Framework Laravel** menawarkan fitur bawaan untuk pembuatan API RESTful, termasuk routing, validasi, dan serialisasi
+- **Framework Lumen** merupakan micro-framework dari Laravel yang dirancang khusus untuk pembuatan microservices dan API dengan kecepatan dan efisiensi yang tinggi
+
 
 ## Terkait Database
 
